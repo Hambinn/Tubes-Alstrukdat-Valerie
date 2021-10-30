@@ -1,10 +1,34 @@
 #include <stdio.h>
 #include <math.h>
 #include "matrix.h"
-#define endl printf("\n")
+
 
 /* ********** DEFINISI PROTOTIPE PRIMITIF ********** */
 /* *** Konstruktor membentuk Matrix *** */
+
+void CreateMap(int nRow, int nCol, Map *m) {
+    ROWS(*m) = nRow;
+    COLS(*m) = nCol;
+    int i, j;
+    for (i = 0; i < nRow; i++) {
+        for (j = 0; j < nCol; j++) {
+            ELMT(*m, i, j) = ' ';
+        }
+    }
+}
+
+void displayMap(Map m) {
+    int i, j;
+    for(i=0; i<ROWS(m); i++){
+        for(j=0; j<COLS(m); j++){
+            printf("%c", ELMT(m, i, j));
+        }
+        if(i != ROWS(m)-1){
+            printf("\n");
+        }
+    }
+}
+
 void CreateMatrix(int nRow, int nCol, Matrix *m){
     ROWS(*m) = nRow;
     COLS(*m) = nCol;
@@ -37,7 +61,7 @@ boolean isIdxEff(Matrix m, Index i, Index j){
 }
 /* Mengirimkan true jika i, j adalah Index efektif bagi m */
 
-ElType getElmtDiagonal(Matrix m, Index i){
+int getElmtDiagonal(Matrix m, Index i){
     return ELMT(m, i, i);
 }
 /* Mengirimkan elemen m(i,i) */
@@ -48,8 +72,9 @@ void copyMatrix(Matrix mIn, Matrix *mRes){
     CreateMatrix(ROWS(mIn), COLS(mIn), mRes);
     ROWS(*mRes) = ROWS(mIn);
     COLS(*mRes) = COLS(mIn);
-    for(int i=0; i<ROWS(mIn); i++){
-        for(int j=0; j<COLS(mIn); j++){
+    int i, j;
+    for(i=0; i<ROWS(mIn); i++){
+        for(j=0; j<COLS(mIn); j++){
             ELMT(*mRes, i, j) = ELMT(mIn, i, j);
         }
     }
@@ -60,8 +85,9 @@ void copyMatrix(Matrix mIn, Matrix *mRes){
 /* ********** KELOMPOK BACA/TULIS ********** */
 void readMatrix(Matrix *m, int nRow, int nCol){
     CreateMatrix(nRow, nCol, m);
-    for(int i=0; i<nRow; i++){
-        for(int j=0; j<nCol; j++){
+    int i, j;
+    for(i=0; i<nRow; i++){
+        for(j=0; j<nCol; j++){
             if(j == nCol-1){
                 scanf("%d", &ELMT(*m, i, j));
             }
@@ -82,15 +108,16 @@ void readMatrix(Matrix *m, int nRow, int nCol){
 */
 
 void displayMatrix(Matrix m){
-    for(int i=0; i<ROWS(m); i++){
-        for(int j=0; j<COLS(m); j++){
+    int i, j;
+    for(i=0; i<ROWS(m); i++){
+        for(j=0; j<COLS(m); j++){
             printf("%d", ELMT(m, i, j));
             if(j != COLS(m)-1){
                 printf(" ");
             }
         }
         if(i != ROWS(m)-1){
-            endl;
+            printf("\n");
         }
     }
 }
@@ -109,8 +136,9 @@ void displayMatrix(Matrix m){
 Matrix addMatrix(Matrix m1, Matrix m2){
     Matrix m;
     CreateMatrix(ROWS(m1), COLS(m1), &m);
-    for(int i=0; i<ROWS(m); i++){
-        for(int j=0; j<COLS(m); j++){
+    int i, j;
+    for(i=0; i<ROWS(m); i++){
+        for(j=0; j<COLS(m); j++){
             ELMT(m, i, j) = ELMT(m1, i, j) + ELMT(m2, i, j);
         }
     }
@@ -122,8 +150,9 @@ Matrix addMatrix(Matrix m1, Matrix m2){
 Matrix subtractMatrix(Matrix m1, Matrix m2){
     Matrix m;
     CreateMatrix(ROWS(m1), COLS(m1), &m);
-    for(int i=0; i<ROWS(m); i++){
-        for(int j=0; j<COLS(m); j++){
+    int i, j;
+    for(i=0; i<ROWS(m); i++){
+        for(j=0; j<COLS(m); j++){
             ELMT(m, i, j) = ELMT(m1, i, j) - ELMT(m2, i, j);
         }
     }
@@ -136,18 +165,19 @@ Matrix multiplyMatrix(Matrix m1, Matrix m2){
     Matrix m;
     CreateMatrix(ROWS(m1), COLS(m2), &m);
     // Fill with default (0) for all element
-    for(int i=0; i<ROWS(m); i++){
-        for(int j=0; j<COLS(m); j++){
+    int i, j, k;
+    for(i=0; i<ROWS(m); i++){
+        for(j=0; j<COLS(m); j++){
             ELMT(m, i, j) = 0;
         }
     }
 
     // iterate through rows of m1
-    for(int i=0; i<ROWS(m); i++){
+    for(i=0; i<ROWS(m); i++){
         // iterate through columns of m2
-        for(int j=0; j<COLS(m); j++){
+        for(j=0; j<COLS(m); j++){
             // iterate through rows of m2
-            for(int k=0; k<ROWS(m2); k++){
+            for(k=0; k<ROWS(m2); k++){
                 ELMT(m, i, j) += ELMT(m1, i, k) * ELMT(m2, k, j);
             }
         }
@@ -157,11 +187,12 @@ Matrix multiplyMatrix(Matrix m1, Matrix m2){
 /* Prekondisi : Ukuran kolom efektif m1 = ukuran baris efektif m2 */
 /* Mengirim hasil perkalian matriks: salinan m1 * m2 */
 
-Matrix multiplyConst(Matrix m, ElType x){
+Matrix multiplyConst(Matrix m, int x){
     Matrix mNew;
     CreateMatrix(ROWS(m), COLS(m), &mNew);
-    for(int i=0; i<ROWS(mNew); i++){
-        for(int j=0; j<COLS(mNew); j++){
+    int i, j;
+    for(i=0; i<ROWS(mNew); i++){
+        for(j=0; j<COLS(mNew); j++){
             ELMT(mNew, i, j) = x*ELMT(m, i, j);
         }
     }
@@ -169,9 +200,10 @@ Matrix multiplyConst(Matrix m, ElType x){
 }
 /* Mengirim hasil perkalian setiap elemen m dengan x */
 
-void pMultiplyConst(Matrix *m, ElType k){
-    for(int i=0; i<ROWS(*m); i++){
-        for(int j=0; j<COLS(*m); j++){
+void pMultiplyConst(Matrix *m, int k){
+    int i, j;
+    for(i=0; i<ROWS(*m); i++){
+        for(j=0; j<COLS(*m); j++){
             ELMT(*m, i, j)*=k;
         }
     }
@@ -283,8 +315,9 @@ boolean isIdentity(Matrix m){
 boolean isSparse(Matrix m){
     float max = count(m)*0.05;
     int countX = 0;
-    for(int i=0; i<ROWS(m); i++){
-        for(int j=0; j<COLS(m); j++){
+    int i, j;
+    for(i=0; i<ROWS(m); i++){
+        for(j=0; j<COLS(m); j++){
             if(ELMT(m, i, j) != 0){
                 countX++;
             }
@@ -350,8 +383,9 @@ void pInverse1(Matrix *m){
 void transpose(Matrix *m){
     Matrix mCopy;
     copyMatrix(*m, &mCopy);
-    for(int i=0; i<ROWS(mCopy); i++){
-        for(int j=0; j<COLS(mCopy); j++){
+    int i, j;
+    for(i=0; i<ROWS(mCopy); i++){
+        for(j=0; j<COLS(mCopy); j++){
             ELMT(*m, i, j) = ELMT(mCopy, j, i);
         }
     }
@@ -366,8 +400,9 @@ Matrix minorMatrix(Matrix m, int idx){
     Matrix mNew;
     ROWS(mNew) = ROWS(m)-1;
     COLS(mNew) = COLS(m)-1;
-    for(int i=0; i<ROWS(mNew); i++){
-        for(int j=0; j<COLS(mNew); j++){
+    int i, j;
+    for(i=0; i<ROWS(mNew); i++){
+        for(j=0; j<COLS(mNew); j++){
             if( i>=idx ){
                 ELMT(mNew, i, j) = ELMT(m, i+1, j+1);
             }
@@ -389,7 +424,8 @@ float determinant(Matrix m){
         product = ELMT(m, 0, 0)*ELMT(m, 1, 1) - ELMT(m, 0, 1)*ELMT(m, 1, 0);
     }
     else{
-        for(int i=0; i<ROWS(m); i++){
+        int i;
+        for(i=0; i<ROWS(m); i++){
             int sign = pow((-1), i);
             product += sign*ELMT(m, i, 0)*determinant(minorMatrix(m, i));
         }

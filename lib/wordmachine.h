@@ -7,11 +7,11 @@
 #include "boolean.h"
 #include "charmachine.h"
 
-#define CAPACITY 50
 #define BLANK ' '
+// #define ENTER '\n'
 
 typedef struct {
-   char contents[CAPACITY]; /* container penyimpan kata, indeks yang dipakai [0..CAPACITY-1] */
+   char contents[50]; /* container penyimpan kata, indeks yang dipakai [0..50-1] */
    int length;
 } Word;
 
@@ -24,7 +24,12 @@ void ignoreBlank();
    I.S. : currentChar sembarang 
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-void startWord();
+void ignoreEnter();
+/* Mengabaikan satu atau beberapa ENTER
+   I.S. : currentChar sembarang 
+   F.S. : currentChar ≠ BLANK atau currentChar = MARK */
+
+void startLine();
 /* I.S. : currentChar sembarang 
    F.S. : endWord = true, dan currentChar = MARK; 
           atau endWord = false, currentWord adalah kata yang sudah diakuisisi,
@@ -43,7 +48,6 @@ void copyWord();
    F.S. : currentWord berisi kata yang sudah diakuisisi; 
           currentChar = BLANK atau currentChar = MARK; 
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi CAPACITY, maka sisa kata terpotong */
+          Jika panjang kata melebihi 50, maka sisa kata terpotong */
 
 #endif
-
