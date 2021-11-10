@@ -36,10 +36,11 @@ int StrToInt(Word w) {
     return x;
 }
 
-void readFile() {
+void readFile(char path[]) {
     FILE *fp;
-    fp=fopen("../config/config.txt", "r");
+    fp=fopen(path, "r");
     
+    // ../config/config.txt
     // membuat map dari input ukuran
     
     startLine(fp);
@@ -136,6 +137,7 @@ void readFile() {
         // printf("\n");
         enqueue(&QueueOrder, ITEM);
     }
+    fclose(fp);
     // displayQueue(QueueOrder);
 }
 

@@ -1,14 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../lib/boolean.h"
+#include "readfile.c"
 
+static FILE * tape;
+
+Matrix adjacency;
+Map MAP;
+ListDin Bangunan;
+LOCATION HQ;
+Queue QueueOrder;
 
 void mulai(){
   boolean endmulai = false;
   int command;
   while(!endmulai){
     printf("Permainan Dimulai!\n");
-    printf("\n");
+    endl;
     printf("1. MOVE\n");
     printf("2. PICK_UP\n");
     printf("3. DROP_OFF\n");
@@ -65,33 +73,56 @@ int main(){
   char fileName[30];
   while(!end){
     printf("Welcome to Kurir Mobita!\n");
-    printf("\n");
+    endl;
     printf("Masukkan Pilihan Anda:\n");
     printf("1. NEW GAME\n");
     printf("2. LOAD GAME\n");
     printf("3. EXIT\n");
-
-    scanf("%d",&pilihanMain);
+    endl;
+    printf("Input (angka) : ");
+    tape = stdin;
+    startLine(tape);
+    pilihanMain = StrToInt(currentWord);
     while((pilihanMain!=1) && (pilihanMain!=2 )&& (pilihanMain!=3)){
       printf("Tolong Masukkan Pilihan yang Sesuai!\n");
       printf("1. NEW GAME\n");
       printf("2. LOAD GAME\n");
       printf("3. EXIT\n");
-      scanf("%d",&pilihanMain);
+      endl;
+      printf("Input (angka) : ");
+      startLine(tape);
+      pilihanMain = StrToInt(currentWord);
     }
 
     if(pilihanMain == 1){
-      scanf("%s",fileName);
+      endl;
+      printf("=============================== NEW GAME =================================");
+      endl;
+      printf("Input konfigurasi game (path) : ");;
+      startLine(tape);
+      readFile(currentWord.contents);
+      displayMap(MAP);
+      endl;
       // gatau cara cek nama filenya bener atau ga
     }else if(pilihanMain ==3){
       printf("Terimakasih Sudah Bermain!");
       return 0;
     }else{
-      scanf("%s",fileName);
+      endl;
+      printf("=============================== LOAD GAME =================================");
+      endl;
+      printf("Input konfigurasi game (path) :");
+      startLine(tape);
+      endl;
+      printf("%s", currentWord.contents);
+      printf("Input data saved (path) : ");
+      startLine(tape);
+      printf("%s", currentWord.contents);
       // gatau cara cek nama filenya bener atau ga
     }
- 
+
   }
 
+  fclose(tape);
   return 0;
 }
