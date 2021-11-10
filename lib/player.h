@@ -14,7 +14,7 @@
 typedef struct
 {
     LOCATION currentLocation;
-    int time;
+    float time;
     int money;
     int speed;
     int bagCapacity;

@@ -80,7 +80,13 @@ void move(Player *p, Matrix adjacency){
     else{
         int idx = ELMTListPos(nextLoc,op-1);
         PCurLocation(*p) = LISTDIN_ELMT(Bangunan,idx);
-        PTime(*p)++;
+        if (PSpeed(*p)==1){
+            PTime(*p)++;
+        }
+        else if (PSpeed(*p)==2){
+            PTime(*p) += 0.5;
+        }
+        
         printf("Mobita sekarang berada di titik ");displayLocation(PCurLocation(*p));endl;
     }
 }
