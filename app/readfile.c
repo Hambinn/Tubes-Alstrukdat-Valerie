@@ -1,7 +1,11 @@
+#ifndef _readFile_h
+#define _readFile_h
+
 #include <stdio.h>
 #include "..\lib\boolean.h"
 #include "..\lib\charmachine.h"
 #include "..\lib\listdin.h"
+#include "..\lib\listpos.h"
 #include "..\lib\matrix.h"
 #include "..\lib\point.h"
 #include "..\lib\wordmachine.h"
@@ -11,9 +15,17 @@
 #include "..\lib\location.c"
 #include "..\lib\charmachine.c"
 #include "..\lib\listdin.c"
+#include "..\lib\listpos.c"
 #include "..\lib\matrix.c"
 #include "..\lib\point.c"
 #include "..\lib\wordmachine.c"
+#define endl printf("\n")
+
+extern Matrix adjacency;
+extern Map MAP;
+extern ListDin Bangunan;
+extern Queue QueueOrder;
+extern LOCATION HQ;
 
 int StrToInt(Word w) {
     int x = 0;
@@ -24,9 +36,7 @@ int StrToInt(Word w) {
     return x;
 }
 
-int main() {
-    Map MAP;
-    ListDin Location;
+void readFile() {
     FILE *fp;
     fp=fopen("../config/config.txt", "r");
     
@@ -45,20 +55,20 @@ int main() {
     n = StrToInt(currentWord);
     advWord();
     m = StrToInt(currentWord);
-    POINT HQ = MakePOINT(n, m);
+    POINT hq = MakePOINT(n, m);
     char name = '8';
     ELMT(MAP, 0, 0) = '8';
-    LOCATION hq = makeLocation(name, HQ);
+    LOCATION HQ = makeLocation(name, hq);
     
     // memasukkan input beberapa lokasi pada buffer LOCATION
     
     startLine(fp);
     n = StrToInt(currentWord);
-    CreateListDin(&Location, n+1);
-    listdin_insertList(&Location, hq);
-    printf("%c ",Location.buffer[0].name);
-    TulisPOINT(Location.buffer[0].loc);
-    endl;
+    CreateListDin(&Bangunan, n+1);
+    listdin_insertList(&Bangunan, HQ);
+    // printf("%c ",Bangunan.buffer[0].name);
+    // TulisPOINT(Bangunan.buffer[0].loc);
+    // endl;
     int i;
     for (i = 0; i < n; i++) {
         int x, y;
@@ -72,16 +82,16 @@ int main() {
         ELMT(MAP, x-1, y-1) = name;
         POINT p = MakePOINT(x, y);
         LOCATION l = makeLocation(name, p);
-        listdin_insertList(&Location, l);
-        printf("%c ",Location.buffer[i+1].name);
-        TulisPOINT(Location.buffer[i+1].loc);
-        endl;
+        listdin_insertList(&Bangunan, l);
+        // printf("%c ",Bangunan.buffer[i+1].name);
+        // TulisPOINT(Bangunan.buffer[i+1].loc);
+        // endl;
     }
-    displayMap(MAP);
+    // displayMap(MAP);
     
     // Matrix Adjacency
 
-    Matrix adjacency;
+    // Matrix adjacency;
     CreateMatrix(n+1, n+1, &adjacency);
     for (i=0; i<n+1; i++) {
         int j, elmt;
@@ -94,15 +104,15 @@ int main() {
         elmt = StrToInt(currentWord);
         ELMT(adjacency, i, j) = elmt;
     }
-    printf("\n");
-    displayMatrix(adjacency);
-    printf("\n");
+    // printf("\n");
+    // displayMatrix(adjacency);
+    // printf("\n");
 
     // Order Pesanan
 
     startLine(fp);
     n = StrToInt(currentWord);
-    Queue QueueOrder;
+    // Queue QueueOrder;
     CreateQueue(&QueueOrder);
     for (i=0; i<n; i++) {
         char pick, drop, type;
@@ -126,5 +136,7 @@ int main() {
         // printf("\n");
         enqueue(&QueueOrder, ITEM);
     }
-    displayQueue(QueueOrder);
+    // displayQueue(QueueOrder);
 }
+
+#endif

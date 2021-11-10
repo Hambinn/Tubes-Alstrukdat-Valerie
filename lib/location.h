@@ -14,6 +14,8 @@ typedef struct {
 #define NAME(x) (x).name
 #define LOC(x)  (x).loc
 
+
 LOCATION makeLocation (char name, POINT loc);
+void displayLocation (LOCATION loc);
 
 #endif
