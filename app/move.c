@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-#include "readfile.h"
+#include "readfile.c"
 
 int charToInt(char c){
     int x;

@@ -17,10 +17,10 @@
 #include "..\lib\point.c"
 #include "..\lib\wordmachine.c"
 
-Matrix adjacency;
-Map MAP;
-ListDin Location;
-Queue QueueOrder;
+extern Matrix adjacency;
+extern Map MAP;
+extern ListDin Location;
+extern Queue QueueOrder;
 
 int StrToInt(Word w) {
     int x = 0;
@@ -31,9 +31,7 @@ int StrToInt(Word w) {
     return x;
 }
 
-int main() {
-    Map MAP;
-    ListDin Location;
+int readFile() {
     FILE *fp;
     fp=fopen("../config/config.txt", "r");
     
@@ -63,9 +61,9 @@ int main() {
     n = StrToInt(currentWord);
     CreateListDin(&Location, n+1);
     listdin_insertList(&Location, hq);
-    printf("%c ",Location.buffer[0].name);
-    TulisPOINT(Location.buffer[0].loc);
-    endl;
+    // printf("%c ",Location.buffer[0].name);
+    // TulisPOINT(Location.buffer[0].loc);
+    // endl;
     int i;
     for (i = 0; i < n; i++) {
         int x, y;
@@ -80,15 +78,15 @@ int main() {
         POINT p = MakePOINT(x, y);
         LOCATION l = makeLocation(name, p);
         listdin_insertList(&Location, l);
-        printf("%c ",Location.buffer[i+1].name);
-        TulisPOINT(Location.buffer[i+1].loc);
-        endl;
+        // printf("%c ",Location.buffer[i+1].name);
+        // TulisPOINT(Location.buffer[i+1].loc);
+        // endl;
     }
-    displayMap(MAP);
+    // displayMap(MAP);
     
     // Matrix Adjacency
 
-    Matrix adjacency;
+    // Matrix adjacency;
     CreateMatrix(n+1, n+1, &adjacency);
     for (i=0; i<n+1; i++) {
         int j, elmt;
@@ -101,15 +99,15 @@ int main() {
         elmt = StrToInt(currentWord);
         ELMT(adjacency, i, j) = elmt;
     }
-    printf("\n");
-    displayMatrix(adjacency);
-    printf("\n");
+    // printf("\n");
+    // displayMatrix(adjacency);
+    // printf("\n");
 
     // Order Pesanan
 
     startLine(fp);
     n = StrToInt(currentWord);
-    Queue QueueOrder;
+    // Queue QueueOrder;
     CreateQueue(&QueueOrder);
     for (i=0; i<n; i++) {
         char pick, drop, type;
@@ -133,5 +131,5 @@ int main() {
         // printf("\n");
         enqueue(&QueueOrder, ITEM);
     }
-    displayQueue(QueueOrder);
+    // displayQueue(QueueOrder);
 }
