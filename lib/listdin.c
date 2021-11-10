@@ -11,7 +11,6 @@ Deskripsi       : Pra Praktikum, membuat realisasi header ADT list Dinamic
 #include <stdlib.h>
 #include "listdin.h"
 #include "point.h"
-#define endl printf("\n")
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create list kosong  */

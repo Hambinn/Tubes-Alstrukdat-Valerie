@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include <math.h>
 #include "readfile.c"
+#include "..\lib\player.c"
+
+
+// Variable Ekstrak dari readFile
+Matrix adjacency;
+Map MAP;
+ListDin Bangunan;
+LOCATION HQ;
+Queue QueueOrder;
 
 int charToInt(char c){
     int x;
@@ -26,7 +35,7 @@ char intToChar(int n){
 
 // adjency adalah matrix adjacency, currentLoc adalah lokasi player terkini
 // return Listpos yang berisi int yg merepresentasikan bangunan, 0 untuk HQ, 1 untuk A dst..
-ListPos giveAdjacency(Matrix adjacency, LOCATION currentloc){
+ListPos nextLocation(Matrix adjacency, LOCATION currentloc){
     ListPos nextPlace;
     CreateListPos(&nextPlace);
     int j;
@@ -39,21 +48,34 @@ ListPos giveAdjacency(Matrix adjacency, LOCATION currentloc){
     return nextPlace;
 }
 
-void displayNextPlace(ListPos nextPlace, ListDin location){
-    int i;
+void displayNextPlace(ListPos nextPlace, ListDin bangunan){
+    int i,j;
     int idx;
+    LOCATION temp;
+    printf("Posisi yang dapat dicapai:");endl;
+    // Untuk setiap i indeks dari array nextPlace
     for(i = 0; i < lengthListPos(nextPlace); i++){
-        idx = ELMTList(nextPlace,i);
-        
+        idx = ELMTListPos(nextPlace,i);
+        temp = LISTDIN_ELMT(bangunan,idx);
+        printf("%d. ",i+1);displayLocation(temp);endl;
     }
 }
 
-Matrix adjacency;
-Map MAP;
-ListDin Location;
-Queue QueueOrder;
+void move(Player p, ListPos nextLocation){
+    
+}
 
 int main(){
     readFile();
-    displayMap(MAP);
+    Player p;
+    createPlayer(&p,Bangunan);
+    displayStatus(p);endl;
+    displayMap(MAP);endl;
+    
+    LOCATION currLoc = LISTDIN_ELMT(Bangunan,1);    // Mobita ada di A
+    ListPos nextPlace = nextLocation(adjacency, currLoc);
+    displayNextPlace(nextPlace, Bangunan);
+
+    char c = intToChar(1);
+    printf("%c", c);
 }

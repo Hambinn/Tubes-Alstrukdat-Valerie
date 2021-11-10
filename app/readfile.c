@@ -1,3 +1,6 @@
+#ifndef _readFile_h
+#define _readFile_h
+
 #include <stdio.h>
 #include "..\lib\boolean.h"
 #include "..\lib\charmachine.h"
@@ -16,11 +19,13 @@
 #include "..\lib\matrix.c"
 #include "..\lib\point.c"
 #include "..\lib\wordmachine.c"
+#define endl printf("\n")
 
 extern Matrix adjacency;
 extern Map MAP;
-extern ListDin Location;
+extern ListDin Bangunan;
 extern Queue QueueOrder;
+extern LOCATION HQ;
 
 int StrToInt(Word w) {
     int x = 0;
@@ -31,7 +36,7 @@ int StrToInt(Word w) {
     return x;
 }
 
-int readFile() {
+void readFile() {
     FILE *fp;
     fp=fopen("../config/config.txt", "r");
     
@@ -50,19 +55,19 @@ int readFile() {
     n = StrToInt(currentWord);
     advWord();
     m = StrToInt(currentWord);
-    POINT HQ = MakePOINT(n, m);
+    POINT hq = MakePOINT(n, m);
     char name = '8';
     ELMT(MAP, 0, 0) = '8';
-    LOCATION hq = makeLocation(name, HQ);
+    LOCATION HQ = makeLocation(name, hq);
     
     // memasukkan input beberapa lokasi pada buffer LOCATION
     
     startLine(fp);
     n = StrToInt(currentWord);
-    CreateListDin(&Location, n+1);
-    listdin_insertList(&Location, hq);
-    // printf("%c ",Location.buffer[0].name);
-    // TulisPOINT(Location.buffer[0].loc);
+    CreateListDin(&Bangunan, n+1);
+    listdin_insertList(&Bangunan, HQ);
+    // printf("%c ",Bangunan.buffer[0].name);
+    // TulisPOINT(Bangunan.buffer[0].loc);
     // endl;
     int i;
     for (i = 0; i < n; i++) {
@@ -77,9 +82,9 @@ int readFile() {
         ELMT(MAP, x-1, y-1) = name;
         POINT p = MakePOINT(x, y);
         LOCATION l = makeLocation(name, p);
-        listdin_insertList(&Location, l);
-        // printf("%c ",Location.buffer[i+1].name);
-        // TulisPOINT(Location.buffer[i+1].loc);
+        listdin_insertList(&Bangunan, l);
+        // printf("%c ",Bangunan.buffer[i+1].name);
+        // TulisPOINT(Bangunan.buffer[i+1].loc);
         // endl;
     }
     // displayMap(MAP);
@@ -133,3 +138,5 @@ int readFile() {
     }
     // displayQueue(QueueOrder);
 }
+
+#endif

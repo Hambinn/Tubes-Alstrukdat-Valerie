@@ -6,3 +6,7 @@ LOCATION makeLocation (char name, POINT loc) {
     LOC(l) = loc;
     return l;
 }
+
+void displayLocation (LOCATION loc){
+    printf("%c ", NAME(loc));TulisPOINT(LOC(loc));
+}

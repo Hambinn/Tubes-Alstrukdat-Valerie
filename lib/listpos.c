@@ -17,7 +17,7 @@ Deskripsi       : Pra Praktikum, membuat realisasi header ADT list
 void CreateListPos(ListPos *l){
     int i;
     for(i=0; i<=CAPACITYLISTPOS-1; i++){
-        ELMTList(*l, i)=VAL_UNDEF;
+        ELMTListPos(*l, i)=VAL_UNDEF;
     }
     return;
 }
@@ -29,10 +29,10 @@ void CreateListPos(ListPos *l){
 /* *** Banyaknya elemen *** */
 int lengthListPos(ListPos l){
     int count = 0;
-    if(ELMTList(l,0)!=VAL_UNDEF){
+    if(ELMTListPos(l,0)!=VAL_UNDEF){
         boolean found = false;
         while(count<=CAPACITYLISTPOS-1 && !(found)){
-            if(ELMTList(l,count)!=VAL_UNDEF){
+            if(ELMTListPos(l,count)!=VAL_UNDEF){
                 count++;
             }
             else{
@@ -81,7 +81,7 @@ void readList(ListPos *l){
     if(size>0){
         int i;
         for(i=0; i<=size-1; i++){
-            scanf("%d",&ELMTList(*l,i));
+            scanf("%d",&ELMTListPos(*l,i));
         }
     }
     return;
@@ -104,10 +104,10 @@ void displayList(ListPos l){
         printf("[");
         for(i=0;i<=lengthListPos(l)-1;i++){
             if(i==0){
-                printf("%d",ELMTList(l,i));
+                printf("%d",ELMTListPos(l,i));
             }
             else{
-                printf(",%d",ELMTList(l,i));
+                printf(",%d",ELMTListPos(l,i));
             }
         }
         printf("]");
@@ -130,10 +130,10 @@ ListPos plusMinusTab(ListPos l1, ListPos l2, boolean plus){
     int i;
     for(i=0;i<=lengthListPos(l1)-1;i++){
         if(plus==true){
-            ELMTList(l,i)=ELMTList(l1,i)+ELMTList(l2,i);
+            ELMTListPos(l,i)=ELMTListPos(l1,i)+ELMTListPos(l2,i);
         }
         else{
-            ELMTList(l,i)=ELMTList(l1,i)-ELMTList(l2,i);
+            ELMTListPos(l,i)=ELMTListPos(l1,i)-ELMTListPos(l2,i);
         }
     }
     return l;
@@ -152,7 +152,7 @@ boolean isListEqual(ListPos l1, ListPos l2){
         sign=true;
         int i=0;
         while(i<=lengthListPos(l1)-1 && sign){
-            if(ELMTList(l1,i)!=ELMTList(l2,i)){
+            if(ELMTListPos(l1,i)!=ELMTListPos(l2,i)){
                 sign=false;
             }
             i++;
@@ -171,7 +171,7 @@ int indexOf(ListPos l, ListType val){
         boolean found=false;
         int i=0;
         while(i<=lengthListPos(l)-1 && !(found)){
-            if(ELMTList(l,i)==val){
+            if(ELMTListPos(l,i)==val){
                 found=true;
                 idx=i;
             }
@@ -181,21 +181,21 @@ int indexOf(ListPos l, ListType val){
     return idx;
 }
 /* Search apakah ada elemen List l yang bernilai val */
-/* Jika ada, menghasilkan indeks i terkecil, dengan ELMTList(l,i) = val */
+/* Jika ada, menghasilkan indeks i terkecil, dengan ELMTListPos(l,i) = val */
 /* Jika tidak ada atau jika l kosong, mengirimkan IDX_UNDEF */
 /* Skema Searching yang digunakan bebas */
 
 /* ********** NILAI EKSTREM ********** */
 void extremes(ListPos l, ListType *max, ListType *min){
     int i;
-    *max=ELMTList(l,0);
-    *min=ELMTList(l,0);
+    *max=ELMTListPos(l,0);
+    *min=ELMTListPos(l,0);
     for(i=1;i<=lengthListPos(l)-1;i++){
-        if(ELMTList(l,i)>*max){
-            *max=ELMTList(l,i);
+        if(ELMTListPos(l,i)>*max){
+            *max=ELMTListPos(l,i);
         }
-        if(ELMTList(l,i)<*min){
-            *min=ELMTList(l,i);
+        if(ELMTListPos(l,i)<*min){
+            *min=ELMTListPos(l,i);
         }
     }
     return;
@@ -209,7 +209,7 @@ boolean isAllEven(ListPos l){
     boolean sign=true;
     int i=0;
     while(i<=lengthListPos(l)-1 && sign){
-        if(ELMTList(l,i)%2!=0){
+        if(ELMTListPos(l,i)%2!=0){
             sign=false;
         }
         i++;
@@ -227,13 +227,13 @@ void sort(ListPos *l, boolean asc){
                 int IMin=pass;
                 int i;
                 for(i=pass+1;i<=lengthListPos(*l)-1;i++){
-                    if(ELMTList(*l,i)<ELMTList(*l,IMin)){
+                    if(ELMTListPos(*l,i)<ELMTListPos(*l,IMin)){
                         IMin=i;
                     }
                 }
-                ListType temp=ELMTList(*l,IMin);
-                ELMTList(*l,IMin)=ELMTList(*l,pass);
-                ELMTList(*l,pass)=temp;
+                ListType temp=ELMTListPos(*l,IMin);
+                ELMTListPos(*l,IMin)=ELMTListPos(*l,pass);
+                ELMTListPos(*l,pass)=temp;
             }
         }
         else{
@@ -242,13 +242,13 @@ void sort(ListPos *l, boolean asc){
                 int IMax=pass;
                 int i;
                 for(i=pass+1;i<=lengthListPos(*l)-1;i++){
-                    if(ELMTList(*l,i)>ELMTList(*l,IMax)){
+                    if(ELMTListPos(*l,i)>ELMTListPos(*l,IMax)){
                         IMax=i;
                     }
                 }
-                ListType temp=ELMTList(*l,IMax);
-                ELMTList(*l,IMax)=ELMTList(*l,pass);
-                ELMTList(*l,pass)=temp;
+                ListType temp=ELMTListPos(*l,IMax);
+                ELMTListPos(*l,IMax)=ELMTListPos(*l,pass);
+                ELMTListPos(*l,pass)=temp;
             }
         }
     }
@@ -264,7 +264,7 @@ void sort(ListPos *l, boolean asc){
 /* ********** MENAMBAH DAN MENGHAPUS ELEMEN DI AKHIR ********** */
 /* *** Menambahkan elemen terakhir *** */
 void insertLast(ListPos *l, ListType val){
-    ELMTList(*l,lengthListPos(*l))=val;
+    ELMTListPos(*l,lengthListPos(*l))=val;
     return;
 }
 /* Proses: Menambahkan val sebagai elemen terakhir List */
@@ -272,8 +272,8 @@ void insertLast(ListPos *l, ListType val){
 /* F.S. val adalah elemen terakhir l yang baru */
 /* ********** MENGHAPUS ELEMEN ********** */
 void deleteLast(ListPos *l, ListType *val){
-    *val=ELMTList(*l,lengthListPos(*l)-1);
-    ELMTList(*l,lengthListPos(*l)-1)=VAL_UNDEF;
+    *val=ELMTListPos(*l,lengthListPos(*l)-1);
+    ELMTListPos(*l,lengthListPos(*l)-1)=VAL_UNDEF;
 }
 /* Proses : Menghapus elemen terakhir List */
 /* I.S. List tidak kosong */

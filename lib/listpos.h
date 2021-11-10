@@ -26,13 +26,13 @@ typedef struct {
 /* Jika l adalah ListPos, cara deklarasi dan akses: */
 /* Deklarasi : l : ListPos */
 /* Maka cara akses: 
-   ELMTList(l,i) untuk mengakses elemen ke-i */
+   ELMTListPos(l,i) untuk mengakses elemen ke-i */
 /* Definisi : 
    List kosong: semua elemen bernilai VAL_UNDEF
-   Definisi elemen pertama: ELMTList(l,i) dengan i=0 */
+   Definisi elemen pertama: ELMTListPos(l,i) dengan i=0 */
 
 /* ********** SELEKTOR ********** */
-#define ELMTList(l, i) (l).contents[(i)]
+#define ELMTListPos(l, i) (l).contents[(i)]
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create List kosong  */
@@ -103,7 +103,7 @@ boolean isListEqual(ListPos l1, ListPos l2);
 /* ***  Perhatian : List boleh kosong!! *** */
 int indexOf(ListPos l, ListType val);
 /* Search apakah ada elemen List l yang bernilai val */
-/* Jika ada, menghasilkan indeks i terkecil, dengan ELMTList(l,i) = val */
+/* Jika ada, menghasilkan indeks i terkecil, dengan ELMTListPos(l,i) = val */
 /* Jika tidak ada atau jika l kosong, mengirimkan IDX_UNDEF */
 /* Skema Searching yang digunakan bebas */
 

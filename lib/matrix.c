@@ -19,11 +19,16 @@ void CreateMap(int nRow, int nCol, Map *m) {
 
 void displayMap(Map m) {
     int i, j;
-    for(i=0; i<ROWS(m); i++){
-        for(j=0; j<COLS(m); j++){
-            printf("%c", ELMT(m, i, j));
+    for(i=-1; i<ROWS(m)+1; i++){
+        for(j=-1; j<COLS(m)+1; j++){
+            if(i==-1 || i==ROWS(m) || j==-1 || j==COLS(m)){
+                printf("#");
+            }
+            else{
+                printf("%c", ELMT(m, i, j));
+            }
         }
-        if(i != ROWS(m)-1){
+        if(i != ROWS(m)){
             printf("\n");
         }
     }
