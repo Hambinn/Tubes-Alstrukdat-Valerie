@@ -1,28 +1,28 @@
 #ifndef LISTGADGET_H
 #define LISTGADGET_H
 
-#include "../boolean.h"
+#include "boolean.h"
 
 /*  Kamus Umum */
-#define CAPACITY 5
+#define INVENTORY 5
 #define STRING 22
-#define VAL_UNDEF "-"
+#define STRIP "-"
 #define GADGET {"Kain Pembungkus Waktu", "Senter Pembesar", "Pintu Kemana Saja", "Mesin Waktu", "Senter Pengecil"}
 
 /* Definisi elemen dan koleksi objek */
   /* type elemen List */
 typedef char ElType;
 typedef struct {
-   ElType* contents[CAPACITY]; /* memori tempat penyimpan elemen (container) */
+   ElType* contents[INVENTORY]; /* memori tempat penyimpan elemen (container) */
 } ListGadget;
-ElType arr[CAPACITY][STRING] = GADGET;
-/* Indeks yang digunakan [0..CAPACITY-1] */
+ElType arr[INVENTORY][STRING] = GADGET;
+/* Indeks yang digunakan [0..INVENTORY-1] */
 /* Jika l adalah ListGadget, cara deklarasi dan akses: */
 /* Deklarasi : l : ListGadget */
 /* Maka cara akses: 
    GDGT(l,i) untuk mengakses elemen ke-i */
 /* Definisi : 
-   List kosong: semua elemen bernilai VAL_UNDEF
+   List kosong: semua elemen bernilai STRIP
    Definisi elemen pertama: GDGT(l,i) dengan i=0 */
 
 /* ********** SELEKTOR ********** */
@@ -32,8 +32,8 @@ ElType arr[CAPACITY][STRING] = GADGET;
 /* Konstruktor : create List kosong  */
 void CreateListGadget(ListGadget *l);
 /* I.S. l sembarang */
-/* F.S. Terbentuk List l kosong dengan kapasitas CAPACITY */
-/* Proses: Inisialisasi semua elemen List l dengan VAL_UNDEF */
+/* F.S. Terbentuk List l kosong dengan kapasitas INVENTORY */
+/* Proses: Inisialisasi semua elemen List l dengan STRIP */
 
 /* ********** MENAMBAH DAN MENGHAPUS ELEMEN DI AKHIR ********** */
 /* *** Menambahkan elemen terakhir *** */
@@ -51,19 +51,19 @@ void deleteGadget(ListGadget *l, int i);
 
 /* ********** SELEKTOR (TAMBAHAN) ********** */
 /* *** Banyaknya elemen *** */
-int length(ListGadget l);
+int lengthGadget(ListGadget l);
 /* Mengirimkan banyaknya elemen efektif List */
 /* Mengirimkan nol jika List kosong */
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test List kosong *** */
-boolean isEmpty(ListGadget l);
+boolean isEmptyInventory(ListGadget l);
 /* Mengirimkan true jika List l kosong, mengirimkan false jika tidak */
 /* *** Test List penuh *** */
-boolean isFull(ListGadget l);
+boolean isFullInventory(ListGadget l);
 /* Mengirimkan true jika List l penuh, mengirimkan false jika tidak */
 
-void displayList(ListGadget l);
+void displayListGadget(ListGadget l);
 /* Proses : Menuliskan isi List dengan traversal, List ditulis di antara kurung 
    siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
    karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */

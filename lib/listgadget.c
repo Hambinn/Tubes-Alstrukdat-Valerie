@@ -5,14 +5,14 @@
 /* Konstruktor : create List kosong  */
 void CreateListGadget(ListGadget *l)
 /* I.S. l sembarang */
-/* F.S. Terbentuk List l kosong dengan kapasitas CAPACITY */
-/* Proses: Inisialisasi semua elemen List l dengan VAL_UNDEF */
+/* F.S. Terbentuk List l kosong dengan kapasitas INVENTORY */
+/* Proses: Inisialisasi semua elemen List l dengan STRIP */
 {
    
    int i;
-   for(i=0; i<CAPACITY; i++)
+   for(i=0; i<INVENTORY; i++)
    {
-      GDGT(*l,i)=VAL_UNDEF;
+      GDGT(*l,i)=STRIP;
    }
 }
 
@@ -33,17 +33,17 @@ void deleteGadget(ListGadget *l, int i)
 /* F.S. Banyaknya elemen List berkurang satu */
 /*      List l mungkin menjadi kosong */
 {
-   GDGT(*l,i) = VAL_UNDEF;
+   GDGT(*l,i) = STRIP;
 }
 
 /* ********** SELEKTOR (TAMBAHAN) ********** */
 /* *** Banyaknya elemen *** */
-int length(ListGadget l)
+int lengthGadget(ListGadget l)
 /* Mengirimkan banyaknya elemen efektif List */
 /* Mengirimkan nol jika List kosong */
 {
    int i=0;
-   while (GDGT(l,i)!=VAL_UNDEF && i<CAPACITY)
+   while (GDGT(l,i)!=STRIP && i<INVENTORY)
    {
       i++;
    }
@@ -52,26 +52,26 @@ int length(ListGadget l)
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test List kosong *** */
-boolean isEmpty(ListGadget l)
+boolean isEmptyInventory(ListGadget l)
 /* Mengirimkan true jika List l kosong, mengirimkan false jika tidak */
 /* *** Test List penuh *** */
 {
-   return(length(l)==0);
+   return(lengthGadget(l)==0);
 }
-boolean isFull(ListGadget l)
+boolean isFullInventory(ListGadget l)
 /* Mengirimkan true jika List l penuh, mengirimkan false jika tidak */
 {
-   return(length(l)==CAPACITY);
+   return(lengthGadget(l)==INVENTORY);
 }
 
-void displayList(ListGadget l)
+void displayListGadget(ListGadget l)
 {
    int i;
    printf("[");
-   for(i=0;i<CAPACITY;i++)
+   for(i=0;i<INVENTORY;i++)
    {
       printf("%s", GDGT(l,i));
-      if (i!=CAPACITY-1)
+      if (i!=INVENTORY-1)
       {
          printf(",");
       }

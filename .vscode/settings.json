@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "*html": "html",
-        "math.h": "c",
-        "point.h": "c",
-        "wordmachine.c": "cpp",
-        "player.h": "c"
-    }
-}
