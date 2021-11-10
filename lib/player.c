@@ -15,11 +15,23 @@ void createPlayer(Player *p, ListDin bangunan){
     PBagCapa(*p) = 3;
 }
 
-void displayStatus(Player p){
-    LOCATION temp = PCurLocation(p);
-    printf("Player berada di: %c ", NAME(temp));TulisPOINT(LOC(temp));endl;
-    printf("Waktu: %d", PTime(p));endl;
-    printf("Money(sen): %d", PMoney(p));endl;
-    printf("Speed: %d", PSpeed(p));endl;
+void displayTime(Player p){
+    printf("Waktu: %d", PTime(p));
+}
+void displayMoney(Player p){
+    printf("Money(sen): %d", PMoney(p));
+}
+void displaySpeed(Player p){
+    printf("Speed: %d", PSpeed(p));
+}
+void displayBagCapa(Player p){
     printf("Capasitas Tas: %d", PBagCapa(p));
+}
+
+void displayStatus(Player p){
+    printf("Player berada di: ");displayLocation(PCurLocation(p));endl;
+    displayTime(p);endl;
+    displayMoney(p);endl;
+    displaySpeed(p);endl;
+    displayBagCapa(p);
 }

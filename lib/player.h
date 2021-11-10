@@ -43,6 +43,10 @@ void createPlayer(Player *p, ListDin bangunan);
 // Menampilkan status player
 void displayStatus(Player p);
 
-// FUNGSI...!!!
+// Procedure menampilkan untuk status...!!!
+void displayTime(Player p);
+void displayMoney(Player p);
+void displaySpeed(Player p);
+void displayBagCapa(Player p);
 
 #endif

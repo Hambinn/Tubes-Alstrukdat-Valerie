@@ -28,7 +28,7 @@ char intToChar(int n){
         c = '8';
     }
     else{
-        char c = (n + (int)'@');
+        c = (n + (int)'@');
     }
     return c;
 }
@@ -61,8 +61,28 @@ void displayNextPlace(ListPos nextPlace, ListDin bangunan){
     }
 }
 
-void move(Player p, ListPos nextLocation){
-    
+void move(Player *p, Matrix adjacency){
+    // Cari next lokasi yang memenuhi
+    ListPos nextLoc = nextLocation(adjacency, PCurLocation(*p));
+    // Tampilkan next lokasi
+    displayNextPlace(nextLoc, Bangunan);
+    printf("Posisi yang ingin dipilih? (ketik 0 untuk kembali)");endl;
+    // Pilih lokasi selanjutnya
+    int op;
+    scanf("%d",&op);
+    while(op<0 || op>lengthListPos(nextLoc)){
+        printf("Harap Masukkan angka yg benar");endl;
+        scanf("%d",&op);
+    }
+    if (op == 0){
+        return;
+    }
+    else{
+        int idx = ELMTListPos(nextLoc,op-1);
+        PCurLocation(*p) = LISTDIN_ELMT(Bangunan,idx);
+        PTime(*p)++;
+        printf("Mobita sekarang berada di titik ");displayLocation(PCurLocation(*p));endl;
+    }
 }
 
 int main(){
@@ -71,11 +91,10 @@ int main(){
     createPlayer(&p,Bangunan);
     displayStatus(p);endl;
     displayMap(MAP);endl;
+    move(&p,adjacency);
+    displayStatus(p);endl;
+    displayMap(MAP);endl;
     
-    LOCATION currLoc = LISTDIN_ELMT(Bangunan,1);    // Mobita ada di A
-    ListPos nextPlace = nextLocation(adjacency, currLoc);
-    displayNextPlace(nextPlace, Bangunan);
 
-    char c = intToChar(1);
-    printf("%c", c);
+
 }
