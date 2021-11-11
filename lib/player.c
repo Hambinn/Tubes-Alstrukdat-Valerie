@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "player.h"
-#include "..\app\readfile.c"
+#define endl printf("\n")
 
 /* Awalnya currentLocation di HQ (berdasarkan readFile)
            time = 0.0 (float)

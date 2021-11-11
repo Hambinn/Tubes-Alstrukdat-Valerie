@@ -23,20 +23,18 @@ Item copyItem(Item ITEM) {
     return x;
 }
 
-void displayItem(Item ITEM) {
-    printf("Waktu pesanan masuk : %d\n", TMASUK(ITEM));
-    printf("Lokasi pick-up : %c\n", PICKUP(ITEM));
-    printf("Lokasi drop-off : %c\n", DROPOFF(ITEM));
-    printf("Jenis item : ");
+void displayItem(Item ITEM, float time) {
+    printf("%c ", PICKUP(ITEM));
+    printf("-> %c ", DROPOFF(ITEM));
     if (TYPE(ITEM) == 'P') {
-        printf("Perishable\n");
-        printf("Duration : %d\n", DURATION(ITEM));
+        printf("(Perishable Item, ");
+        printf("sisa waktu %d)\n", DURATION(ITEM) - ((int)time - TMASUK(ITEM)));
     } else if (TYPE(ITEM) == 'N') {
-        printf("Normal\n");
+        printf("(Normal Item)\n");
     } else if (TYPE(ITEM) == 'H') {
-        printf("Heavy\n");
+        printf("(Heavy Item)\n");
     } else if (TYPE(ITEM) == 'V') {
-        printf("VIP\n");
+        printf("(VIP Item)\n");
     }
 }
 
@@ -131,7 +129,7 @@ void dequeue(Queue *q, Item *ITEM) {
 }
 
 /* *** Display Queue *** */
-void displayQueue(Queue q) {
+void displayQueue(Queue q, float time) {
     /* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung 
     siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
     karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
@@ -145,11 +143,29 @@ void displayQueue(Queue q) {
         printf("Tidak Ada Pesanan");
     } else {
         int i = IDX_HEAD(q);
-        printf("List Pesanan\n\n");
-        while (i <= IDX_TAIL(q)) {
-            displayItem(q.buffer[i]);
-            printf("\n");
-            i++;
+        int j = 1;
+        if (q.buffer[0].tMasuk <= time) {
+            printf("List Pesanan :\n\n");
+            while (i <= IDX_TAIL(q)) {
+                if (q.buffer[i].tMasuk <= time) {
+                    if (q.buffer[i].type == 'P') {
+                        if (q.buffer[i].tMasuk <= time && time < q.buffer[i].tMasuk + q.buffer[i].duration ) {
+                            printf("%d. ", j);
+                            j++;
+                            displayItem(q.buffer[i], time);
+                            printf("\n");
+                        }
+                    } else {
+                        printf("%d. ", j);
+                        j++;
+                        displayItem(q.buffer[i], time);
+                        printf("\n");
+                    }
+                }
+                i++;
+            }
+        } else {
+            printf("Tidak Ada Pesanan");
         }
     }
 }

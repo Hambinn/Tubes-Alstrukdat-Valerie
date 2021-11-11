@@ -1,6 +1,3 @@
-#ifndef _readFile_h
-#define _readFile_h
-
 #include <stdio.h>
 #include "..\lib\boolean.h"
 #include "..\lib\charmachine.h"
@@ -19,7 +16,7 @@
 #include "..\lib\matrix.c"
 #include "..\lib\point.c"
 #include "..\lib\wordmachine.c"
-#define endl printf("\n")
+
 
 extern Matrix adjacency;
 extern Map MAP;
@@ -140,5 +137,3 @@ void readFile(char path[]) {
     fclose(fp);
     // displayQueue(QueueOrder);
 }
-
-#endif

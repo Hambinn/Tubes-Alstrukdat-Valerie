@@ -28,7 +28,7 @@ Item makeItem (int tMasuk, char pick_up, char drop_off, char type, int dur);
 
 Item copyItem(Item ITEM);
 
-void displayItem(Item ITEM);
+void displayItem(Item ITEM, float time);
 
 typedef struct {
 	Item buffer[100]; 
@@ -76,7 +76,7 @@ void dequeue(Queue *q, Item *val);
         q mungkin kosong */
 
 /* *** Display Queue *** */
-void displayQueue(Queue q);
+void displayQueue(Queue q, float time);
 /* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung 
    siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
    karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
