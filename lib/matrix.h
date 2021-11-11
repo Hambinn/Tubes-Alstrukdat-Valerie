@@ -4,6 +4,10 @@
 #define Matrix_H
 
 #include "boolean.h"
+#include "location.h"
+#include "listpos.h"
+#include "pcolor.h"
+#include "pcolor.c"
 
 /* Ukuran minimum dan maksimum baris dan kolom */
 #define ROW_CAP 100
@@ -32,7 +36,7 @@ typedef struct
 
 void CreateMap(int nRow, int nCol, Map *m);
 
-void displayMap(Map m);
+void displayMap(Map m,LOCATION curLoc,ListPos nextPlace);
 
 void CreateMatrix(int nRow, int nCol, Matrix *m);
 /* Membentuk sebuah Matrix "kosong" yang siap diisi berukuran nRow x nCol di "ujung kiri" memori */

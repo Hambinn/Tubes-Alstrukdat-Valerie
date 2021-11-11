@@ -17,15 +17,25 @@ void CreateMap(int nRow, int nCol, Map *m) {
     }
 }
 
-void displayMap(Map m) {
+void displayMap(Map m,LOCATION curLoc,ListPos nextPlace) {
     int i, j;
+    char name;
     for(i=-1; i<ROWS(m)+1; i++){
         for(j=-1; j<COLS(m)+1; j++){
             if(i==-1 || i==ROWS(m) || j==-1 || j==COLS(m)){
                 printf("#");
             }
             else{
-                printf("%c", ELMT(m, i, j));
+                name = ELMT(m, i, j);
+                if ( name == NAME(curLoc) ){
+                    print_yellow(name);
+                }
+                else if (isIn(nextPlace,name)){
+                    print_green(name);
+                }
+                else{
+                    printf("%c",name);
+                }
             }
         }
         if(i != ROWS(m)){

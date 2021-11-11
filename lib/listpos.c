@@ -280,3 +280,30 @@ void deleteLast(ListPos *l, ListType *val){
 /* F.S. val adalah nilai elemen terakhir l sebelum penghapusan, */
 /*      Banyaknya elemen List berkurang satu */
 /*      List l mungkin menjadi kosong */
+
+int charToIntLP(char c){
+    int x;
+    if (c=='8'){
+        x = 0;
+    }
+    else{
+        x =((int)c - 64);
+    }
+    return x;
+}
+
+boolean isIn(ListPos l, char X){
+    boolean isin = false;
+    if (!isEmptyListPos(l)){    
+        int i = 0 ;
+        while ( i < lengthListPos(l) && !isin){
+            if ( ELMTListPos(l,i)==charToIntLP(X) ){
+                isin = true;
+            }
+            else{
+                i++;
+            }
+        }
+    }
+    return isin;
+}

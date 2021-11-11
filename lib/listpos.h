@@ -139,4 +139,7 @@ void deleteLast(ListPos *l, ListType *val);
 /*      Banyaknya elemen List berkurang satu */
 /*      List l mungkin menjadi kosong */
 
+int charToIntLP(char c);
+boolean isIn(ListPos l, char X);
+
 #endif

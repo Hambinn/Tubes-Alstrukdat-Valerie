@@ -96,11 +96,13 @@ int main(){
     Player p;
     createPlayer(&p,Bangunan);
     displayStatus(p);endl;
-    displayMap(MAP);endl;
+    ListPos next = nextLocation(adjacency,PCurLocation(p));
+    displayMap(MAP,PCurLocation(p),next);endl;
     move(&p,adjacency);
     displayStatus(p);endl;
-    displayMap(MAP);endl;
+    next = nextLocation(adjacency,PCurLocation(p));
+    displayMap(MAP,PCurLocation(p),next);endl;
     
 
-
+    return 0;
 }
