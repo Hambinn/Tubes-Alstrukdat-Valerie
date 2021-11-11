@@ -92,7 +92,7 @@ void move(Player *p, Matrix adjacency){
 }
 
 int main(){
-    readFile();
+    readFile("../config/config.txt");
     Player p;
     createPlayer(&p,Bangunan);
     displayStatus(p);endl;
