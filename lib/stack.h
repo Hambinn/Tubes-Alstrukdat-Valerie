@@ -6,18 +6,25 @@
 #define STACK_H
 
 #include "boolean.h"
+#include "queue.h"
 
 #define IDX_UNDEF -1
 #define CAPACITY 100
 
-typedef int ElType;
+typedef Item ElType;
 typedef struct {
   ElType buffer[CAPACITY]; /* tabel penyimpan elemen */
-  int idxTop;              /* alamat TOP: elemen puncak */
+  int idxTop;			   /* alamat TOP: elemen puncak */
+  int count;               /* counter jumlah elemen dalam stack */
 } Stack;
+
+int countStack(Stack s);
+/* Mengembalikan jumlah elemen stack */
+
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika s adalah Stack, maka akses elemen : */
+#define COUNTER(s) (s).counter
 #define IDX_TOP(s) (s).idxTop
 #define     TOP(s) (s).buffer[(s).idxTop]
 
