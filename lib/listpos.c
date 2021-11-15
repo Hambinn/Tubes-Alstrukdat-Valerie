@@ -165,7 +165,7 @@ boolean isListEqual(ListPos l1, ListPos l2){
 
 /* ********** SEARCHING ********** */
 /* ***  Perhatian : List boleh kosong!! *** */
-int indexOf(ListPos l, ListType val){
+int indexOfListPos(ListPos l, ListType val){
     int idx=IDX_UNDEF;
     if(lengthListPos(l)!=0){
         boolean found=false;
@@ -282,7 +282,7 @@ void deleteLast(ListPos *l, ListType *val){
 /*      List l mungkin menjadi kosong */
 
 void deleteVal(ListPos *l, ListType val){
-    int idx = indexOf(*l,val);
+    int idx = indexOfListPos(*l,val);
     int i;
     for(i = idx+1; i < lengthListPos(*l); i++){
         ELMTListPos(*l,i-1) = ELMTListPos(*l,i);

@@ -6,6 +6,8 @@
 #include "..\lib\charmachine.h"
 #include "..\lib\charmachine.c"
 #include "..\lib\help.c"
+#include "..\lib\list_linked.h"
+#include "..\lib\list_linked.c"
 #include "..\lib\listdin.h"
 #include "..\lib\listdin.c"
 #include "..\lib\listgadget.h"

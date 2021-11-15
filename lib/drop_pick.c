@@ -9,9 +9,10 @@ ListDin Bangunan;
 Queue QueueOrder;
 LOCATION HQ;
 
-void pick(Stack *bag, ListPos *drafPick, Player p){
+void pick(Stack *bag, List *drafPick, Player p){
     ItemBag item;
     char curr = NAME(PCurLocation(p));
+    int valInt = charToInt(curr);
     boolean found = false;
     int i = 0;
     while (!found && i < lengthQueue(QueueOrder)){
@@ -31,5 +32,9 @@ void pick(Stack *bag, ListPos *drafPick, Player p){
     if ( ITEM_TYPE(item)=='H' ){
         HEAVY(*bag)++;
     }
-    deleteVal(&drafPick,charToInt(curr));
+    int idx = indexOf(*drafPick,valInt);
+    int temp;
+    deleteAt(&drafPick,idx,&temp);
 }
+
+void

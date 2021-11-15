@@ -51,14 +51,14 @@ void CreateQueue(Queue *q) {
 }
 
 /* ********* Prototype ********* */
-boolean isEmpty(Queue q) {
+boolean isEmptyQueue(Queue q) {
     /* Mengirim true jika q kosong: lihat definisi di atas */
     
     /* ALGORITMA */
     return (IDX_HEAD(q) > IDX_TAIL(q) || (IDX_HEAD(q) == IDX_UNDEF && IDX_TAIL(q) == IDX_UNDEF));
 }
 
-boolean isFull(Queue q) {
+boolean isFullQueue(Queue q) {
     /* Mengirim true jika tabel penampung elemen q sudah penuh */
     /* yaitu jika index head bernilai 0 dan index tail bernilai 100-1 */
 
@@ -70,7 +70,7 @@ int lengthQueue(Queue q) {
     /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
     /* ALGORITMA */
-    if (isEmpty(q)) {
+    if (isEmptyQueue(q)) {
         return 0;
     } else {
         return IDX_TAIL(q) - IDX_HEAD(q) + 1;
@@ -86,7 +86,7 @@ void enqueue(Queue *q, Item ITEM) {
             menjadi rata kiri untuk membuat ruang kosong bagi TAIL baru  */
     
     /* ALGORITMA */
-    if (isEmpty(*q)) {
+    if (isEmptyQueue(*q)) {
         IDX_HEAD(*q) = 0;
         IDX_TAIL(*q) = 0;
         (*q).buffer[0] = ITEM;
@@ -138,7 +138,7 @@ void displayQueue(Queue q, float time) {
     /* Jika Queue kosong : menulis [] */
 
     /* ALGORITMA */
-    if (isEmpty(q)) {
+    if (isEmptyQueue(q)) {
         printf("Tidak Ada Pesanan");
     } else {
         int i = IDX_HEAD(q);
