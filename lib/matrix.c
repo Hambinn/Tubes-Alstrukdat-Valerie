@@ -27,14 +27,15 @@ void displayMap(Map m,LOCATION curLoc,ListPos nextPlace, Stack bag) {
             }
             else{
                 name = ELMT(m, i, j);
+                char drop = TOP(bag).drop_off;
                 if ( name == NAME(curLoc) ){
                     print_yellow(name);
                 }
-                else if ( DROP(TOP(bag)) == name ){
-                    
-                }
                 else if (isIn(nextPlace,name)){
                     print_green(name);
+                }
+                else if ( name == drop ){
+
                 }
                 else{
                     printf("%c",name);

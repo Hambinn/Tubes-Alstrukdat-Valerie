@@ -24,10 +24,10 @@ typedef struct
 
 
 // ACCESORR
-#define PTime(p) (p).time
-#define PMoney(p) (p).money
-#define PSpeed(p) (p).speed
-#define PBagCapa(p) (p).bagCapacity
+#define        PTime(p) (p).time
+#define       PMoney(p) (p).money
+#define       PSpeed(p) (p).speed
+#define     PBagCapa(p) (p).bagCapacity
 #define PCurLocation(p) (p).currentLocation
 
 LOCATION HQ;

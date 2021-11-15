@@ -12,14 +12,10 @@
 #define IDX_UNDEF -1
 #define CAPACITY 100
 
-# define DROP(s) (s).drop_off;
-# define ITEM_TYPE(s) (s).item_type;
-# define DURATION(s) (s).duration;
-
 typedef struct {
-        char drop_off;
-        char item_type;
-        int duration; // Misal perishabel itu durasi, kalo misal heavy itu banyak heavy
+  char drop_off;
+  char item_type;
+  int duration; // Misal perishabel itu durasi, kalo misal heavy itu banyak heavy
 } ItemBag;
 typedef struct {
   ItemBag buffer[CAPACITY]; /* tabel penyimpan elemen */
@@ -31,6 +27,9 @@ typedef struct {
 int countStack(Stack s);
 /* Mengembalikan jumlah elemen stack */
 
+# define DROP_PLACE(s) (s).drop_off;
+# define  ITEM_TYPE(s) (s).item_type;
+# define   DURATION(s) (s).duration;
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika s adalah Stack, maka akses elemen : */
