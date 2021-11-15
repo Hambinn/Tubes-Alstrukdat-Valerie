@@ -18,6 +18,7 @@ typedef struct
     int money;
     int speed;
     int bagCapacity;
+    ListPos pick;
     // durasi effect
     // jenis item
 }Player;

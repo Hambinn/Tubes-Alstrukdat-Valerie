@@ -27,9 +27,9 @@ typedef struct {
 int countStack(Stack s);
 /* Mengembalikan jumlah elemen stack */
 
-# define DROP_PLACE(s) (s).drop_off;
-# define  ITEM_TYPE(s) (s).item_type;
-# define   DURATION(s) (s).duration;
+#define DROP_PLACE(s) (s).drop_off;
+#define  ITEM_TYPE(s) (s).item_type;
+#define   DURATION(s) (s).duration
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika s adalah Stack, maka akses elemen : */

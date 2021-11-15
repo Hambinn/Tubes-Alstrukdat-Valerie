@@ -27,7 +27,8 @@ void displayMap(Map m,LOCATION curLoc,ListPos nextPlace, Stack bag) {
             }
             else{
                 name = ELMT(m, i, j);
-                char drop = TOP(bag).drop_off;
+                char drop = DROP_PLACE(TOP(bag));
+                char pick = 'a';
                 if ( name == NAME(curLoc) ){
                     print_yellow(name);
                 }
@@ -35,6 +36,9 @@ void displayMap(Map m,LOCATION curLoc,ListPos nextPlace, Stack bag) {
                     print_green(name);
                 }
                 else if ( name == drop ){
+                    print_blue(name);
+                }
+                else if ( name == pick ){
 
                 }
                 else{
