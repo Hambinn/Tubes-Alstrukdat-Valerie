@@ -17,7 +17,7 @@ void CreateMap(int nRow, int nCol, Map *m) {
     }
 }
 
-void displayMap(Map m,LOCATION curLoc,ListPos nextPlace) {
+void displayMap(Map m,LOCATION curLoc,ListPos nextPlace, Stack bag) {
     int i, j;
     char name;
     for(i=-1; i<ROWS(m)+1; i++){
@@ -29,6 +29,9 @@ void displayMap(Map m,LOCATION curLoc,ListPos nextPlace) {
                 name = ELMT(m, i, j);
                 if ( name == NAME(curLoc) ){
                     print_yellow(name);
+                }
+                else if ( DROP(TOP(bag)) == name ){
+                    
                 }
                 else if (isIn(nextPlace,name)){
                     print_green(name);

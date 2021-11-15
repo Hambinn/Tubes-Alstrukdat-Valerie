@@ -7,15 +7,25 @@
 
 #include "boolean.h"
 #include "queue.h"
+#include "player.h"
 
 #define IDX_UNDEF -1
 #define CAPACITY 100
 
-typedef Item ElType;
+# define DROP(s) (s).drop_off;
+# define ITEM_TYPE(s) (s).item_type;
+# define DURATION(s) (s).duration;
+
 typedef struct {
-  ElType buffer[CAPACITY]; /* tabel penyimpan elemen */
+        char drop_off;
+        char item_type;
+        int duration; // Misal perishabel itu durasi, kalo misal heavy itu banyak heavy
+} ItemBag;
+typedef struct {
+  ItemBag buffer[CAPACITY]; /* tabel penyimpan elemen */
   int idxTop;			   /* alamat TOP: elemen puncak */
   int counter;               /* counter jumlah elemen dalam stack */
+  int heavy;      // Banyaknya barang heavy
 } Stack;
 
 int countStack(Stack s);
@@ -27,6 +37,7 @@ int countStack(Stack s);
 #define COUNTER(s) (s).counter
 #define IDX_TOP(s) (s).idxTop
 #define     TOP(s) (s).buffer[(s).idxTop]
+#define   HEAVY(s) (s).heavy;
 
 /* *** Konstruktor/Kreator *** */
 void CreateStack(Stack *s);
@@ -36,19 +47,19 @@ void CreateStack(Stack *s);
 /* Proses : Melakukan alokasi, membuat sebuah s kosong */
 
 /* ************ Prototype ************ */
-boolean isEmpty(Stack s);
+boolean isEmptyStack(Stack s);
 /* Mengirim true jika s kosong: lihat definisi di atas */
-boolean isFull(Stack s);
+boolean isFullStack(Stack s);
 /* Mengirim true jika tabel penampung nilai s stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
-void push(Stack *s, ElType val);
+void push(Stack *s, ItemBag val);
 /* Menambahkan val sebagai elemen Stack s */
 /* I.S. s mungkin kosong, tabel penampung elemen stack TIDAK penuh */
 /* F.S. val menjadi TOP yang baru,IDX_TOP bertambah 1 */
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void pop(Stack *s, ElType *val);
+void pop(Stack *s, ItemBag *val);
 /* Menghapus val dari Stack s */
 /* I.S. s tidak mungkin kosong */
 /* F.S. val adalah nilai elemen TOP yang lama, IDX_TOP berkurang 1 */
