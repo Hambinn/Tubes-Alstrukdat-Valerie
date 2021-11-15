@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "readfile.c"
-#include "..\lib\player.c"
+#include "..\lib\player.h"
 
 
 // Variable Ekstrak dari readFile

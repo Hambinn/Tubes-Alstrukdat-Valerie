@@ -36,3 +36,24 @@ void displayStatus(Player p){
     displaySpeed(p);endl;
     displayBagCapa(p);
 }
+int charToInt(char c){
+    int x;
+    if (c=='8'){
+        x = 0;
+    }
+    else{
+        x =((int)c - 64);
+    }
+    return x;
+}
+
+char intToChar(int n){
+    char c;
+    if (n==0){
+        c = '8';
+    }
+    else{
+        c = (n + (int)'@');
+    }
+    return c;
+}
