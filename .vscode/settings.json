@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "*html": "html",
-        "boolean.h": "c"
+        "boolean.h": "c",
+        "queue.c": "cpp",
+        "listpos.c": "cpp"
     }
 }

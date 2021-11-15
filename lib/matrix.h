@@ -37,7 +37,7 @@ typedef struct
 
 void CreateMap(int nRow, int nCol, Map *m);
 
-void displayMap(Map m,LOCATION curLoc,ListPos nextPlace, Stack bag);
+void displayMap(Map m,LOCATION curLoc,ListPos nextPlace);
 
 void CreateMatrix(int nRow, int nCol, Matrix *m);
 /* Membentuk sebuah Matrix "kosong" yang siap diisi berukuran nRow x nCol di "ujung kiri" memori */

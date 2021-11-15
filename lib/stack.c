@@ -1,9 +1,9 @@
 #include "stack.h"
 #include <stdio.h>
 
-int countStack(Stack s){
+int lengthStack(Stack s){
 	/* Mengembalikan jumlah elemen dalam stack */
-	return (COUNTER(s));
+	return (LEN_STACK(s));
 }
 
 /* *** Konstruktor/Kreator *** */

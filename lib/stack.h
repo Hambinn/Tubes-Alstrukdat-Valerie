@@ -7,7 +7,6 @@
 
 #include "boolean.h"
 #include "queue.h"
-#include "player.h"
 
 #define IDX_UNDEF -1
 #define CAPACITY 100
@@ -20,23 +19,23 @@ typedef struct {
 typedef struct {
   ItemBag buffer[CAPACITY]; /* tabel penyimpan elemen */
   int idxTop;			   /* alamat TOP: elemen puncak */
-  int counter;               /* counter jumlah elemen dalam stack */
+  int length;               /* length jumlah elemen dalam stack */
   int heavy;      // Banyaknya barang heavy
 } Stack;
 
-int countStack(Stack s);
+int lengthStack(Stack s);
 /* Mengembalikan jumlah elemen stack */
 
 #define DROP_PLACE(s) (s).drop_off;
 #define  ITEM_TYPE(s) (s).item_type;
-#define   DURATION(s) (s).duration
+#define   COUNT(s) (s).duration
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika s adalah Stack, maka akses elemen : */
-#define COUNTER(s) (s).counter
-#define IDX_TOP(s) (s).idxTop
-#define     TOP(s) (s).buffer[(s).idxTop]
-#define   HEAVY(s) (s).heavy;
+#define LEN_STACK(s) (s).length
+#define   IDX_TOP(s) (s).idxTop
+#define       TOP(s) (s).buffer[(s).idxTop]
+#define     HEAVY(s) (s).heavy;
 
 /* *** Konstruktor/Kreator *** */
 void CreateStack(Stack *s);

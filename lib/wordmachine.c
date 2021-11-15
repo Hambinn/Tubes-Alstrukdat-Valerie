@@ -3,8 +3,6 @@
 /* Kelas : 02 */
 
 #include <stdio.h>
-#include "boolean.h"
-#include "charmachine.h"
 #include "wordmachine.h"
 
 char currentChar;

@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "readfile.c"
-#include "..\lib\player.h"
-
+#include "..\lib\player.c"
 
 // Variable Ekstrak dari readFile
 Matrix adjacency;
@@ -11,27 +10,6 @@ ListDin Bangunan;
 LOCATION HQ;
 Queue QueueOrder;
 
-int charToInt(char c){
-    int x;
-    if (c=='8'){
-        x = 0;
-    }
-    else{
-        x =((int)c - 64);
-    }
-    return x;
-}
-
-char intToChar(int n){
-    char c;
-    if (n==0){
-        c = '8';
-    }
-    else{
-        c = (n + (int)'@');
-    }
-    return c;
-}
 
 // adjency adalah matrix adjacency, currentLoc adalah lokasi player terkini
 // return Listpos yang berisi int yg merepresentasikan bangunan, 0 untuk HQ, 1 untuk A dst..

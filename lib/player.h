@@ -1,5 +1,5 @@
-#ifndef _PLAYER_h
-#define _PlAYER_h
+#ifndef PLAYER_H
+#define PlAYER_H
 
 #include "boolean.h"
 #include "charmachine.h"
@@ -49,5 +49,7 @@ void displayTime(Player p);
 void displayMoney(Player p);
 void displaySpeed(Player p);
 void displayBagCapa(Player p);
+int charToInt(char c);
+char intToChar(int n);
 
 #endif

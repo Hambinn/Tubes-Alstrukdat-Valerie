@@ -1,7 +1,6 @@
 
 #include <stdio.h>
 #include "queue.h"
-#include "boolean.h"
 
 Item makeItem (int tMasuk, char pickup_location, char dropoff_location, char type, int dur) {
     Item x;
