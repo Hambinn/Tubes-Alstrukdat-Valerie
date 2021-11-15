@@ -2,18 +2,18 @@
 #define NODE_H
 
 #include <stdlib.h>
+#include <stdio.h>
+#include "queue.h"
 
-typedef int ElType;
 typedef struct node* Address;
 typedef struct node {
-    ElType info;
+    Item item;
     Address next;
 } Node;
 
-#define INFO(p) (p)->info
+#define ITEM(p) (p)->item
 #define NEXT(p) (p)->next
 
-Address newNode(ElType val);
-
+Address newNode(Item item);
 
 #endif

@@ -12,29 +12,33 @@ Item makeItem (int tMasuk, char pickup_location, char dropoff_location, char typ
     return x;
 }
 
-Item copyItem(Item ITEM) {
+Item copyItem(Item item) {
     Item x;
-    TMASUK(x) = TMASUK(ITEM);
-    PICKUP(x) = PICKUP(ITEM);
-    DROPOFF(x) = DROPOFF(ITEM);
-    TYPE(x) = TYPE(ITEM);
-    DURATION(x) = DURATION(ITEM);
+    TMASUK(x) = TMASUK(item);
+    PICKUP(x) = PICKUP(item);
+    DROPOFF(x) = DROPOFF(item);
+    TYPE(x) = TYPE(item);
+    DURATION(x) = DURATION(item);
     return x;
 }
 
-void displayItem(Item ITEM, float time) {
-    printf("%c ", PICKUP(ITEM));
-    printf("-> %c ", DROPOFF(ITEM));
-    if (TYPE(ITEM) == 'P') {
+void displayItem(Item item, float time) {
+    printf("%c ", PICKUP(item));
+    printf("-> %c ", DROPOFF(item));
+    if (TYPE(item) == 'P') {
         printf("(Perishable Item, ");
-        printf("sisa waktu %d)\n", DURATION(ITEM) - ((int)time - TMASUK(ITEM)));
-    } else if (TYPE(ITEM) == 'N') {
+        printf("sisa waktu %d)\n", DURATION(item) - ((int)time - TMASUK(item)));
+    } else if (TYPE(item) == 'N') {
         printf("(Normal Item)\n");
-    } else if (TYPE(ITEM) == 'H') {
+    } else if (TYPE(item) == 'H') {
         printf("(Heavy Item)\n");
-    } else if (TYPE(ITEM) == 'V') {
+    } else if (TYPE(item) == 'V') {
         printf("(VIP Item)\n");
     }
+}
+
+boolean isSame (Item item1, Item item2) {
+    return (TMASUK(item1) == TMASUK(item2) && PICKUP(item1) == PICKUP(item2) && DROPOFF(item1) == DROPOFF(item2) && TYPE(item1) == TYPE(item2) && DURATION(item1) == DURATION(item2));
 }
 
 /* *** Kreator *** */
@@ -78,7 +82,7 @@ int lengthQueue(Queue q) {
 }
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, Item ITEM) {
+void enqueue(Queue *q, Item item) {
     /* Proses: Menambahkan val pada q dengan aturan FIFO */
     /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
     /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur".
@@ -89,7 +93,7 @@ void enqueue(Queue *q, Item ITEM) {
     if (isEmptyQueue(*q)) {
         IDX_HEAD(*q) = 0;
         IDX_TAIL(*q) = 0;
-        (*q).buffer[0] = ITEM;
+        (*q).buffer[0] = item;
     } else {
         int i;
         if (IDX_TAIL(*q) == 99) {
@@ -104,26 +108,26 @@ void enqueue(Queue *q, Item ITEM) {
         }
         i = 0;
         int tail = IDX_TAIL(*q);
-        while (i <= tail && TMASUK(ITEM) >= TMASUK((*q).buffer[i])) {
+        while (i <= tail && TMASUK(item) >= TMASUK((*q).buffer[i])) {
             i++;
         }
         while (tail >= i) {
             (*q).buffer[tail+1] = (*q).buffer[tail];
             tail--;
         }
-        (*q).buffer[i] = ITEM;
+        (*q).buffer[i] = item;
         IDX_TAIL(*q) ++;
     }
 }
 
-void dequeue(Queue *q, Item *ITEM) {
+void dequeue(Queue *q, Item *item) {
     /* Proses: Menghapus val pada q dengan aturan FIFO */
     /* I.S. q tidak mungkin kosong */
     /* F.S. val = nilai elemen HEAD pd I.S., HEAD dan IDX_HEAD "mundur"; 
             q mungkin kosong */
 
     /* ALGORITMA */
-    *ITEM = HEAD(*q);
+    *item = HEAD(*q);
     IDX_HEAD(*q)++;
 }
 

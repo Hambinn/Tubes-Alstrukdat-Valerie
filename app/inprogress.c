@@ -11,15 +11,9 @@ LOCATION HQ;
 ListLinked toDo;
 ListLinked inProgress;
 
-void to_do(Player p) {
-    while (TMASUK(HEAD(QueueOrder)) <= PTime(p) && !isEmptyQueue(QueueOrder)) {
-        Item temp;
-        dequeue(&QueueOrder, &temp);
-        insertItem(&toDo, temp);
-    }
-    deletePerishable(&toDo, PTime(p));
-    printf("List To Do : \n\n");
-    displayListLinked(toDo, PTime(p));
+void in_progress(Player p) {
+    printf("List In Progress : \n\n");
+    displayListLinked(inProgress, PTime(p));endl;
     endl;
 }
 
@@ -27,7 +21,7 @@ int main () {
     readFile("../config/config.txt");
     Player p;
     createPlayer(&p,Bangunan);
-    PTime(p) = 29;
+    PTime(p) = 2;
     displayStatus(p);endl;
-    to_do(p);
+    in_progress(p);
 }

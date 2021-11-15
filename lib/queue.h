@@ -30,6 +30,8 @@ Item copyItem(Item ITEM);
 
 void displayItem(Item ITEM, float time);
 
+boolean isSame (Item item1, Item item2);
+
 typedef struct {
 	Item buffer[100]; 
 	int idxHead;

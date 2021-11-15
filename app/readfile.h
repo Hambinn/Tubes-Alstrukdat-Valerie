@@ -26,6 +26,8 @@
 #include "..\lib\stack.c"
 #include "..\lib\wordmachine.h"
 #include "..\lib\wordmachine.c"
+#include "..\lib\node.h"
+#include "..\lib\node.c"
 
 
 extern Matrix adjacency;
