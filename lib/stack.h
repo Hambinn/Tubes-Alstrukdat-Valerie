@@ -15,7 +15,7 @@ typedef Item ElType;
 typedef struct {
   ElType buffer[CAPACITY]; /* tabel penyimpan elemen */
   int idxTop;			   /* alamat TOP: elemen puncak */
-  int count;               /* counter jumlah elemen dalam stack */
+  int counter;               /* counter jumlah elemen dalam stack */
 } Stack;
 
 int countStack(Stack s);
