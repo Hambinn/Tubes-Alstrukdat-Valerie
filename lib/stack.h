@@ -11,6 +11,10 @@
 #define IDX_UNDEF -1
 #define CAPACITY 100
 
+#define DROP_PLACE(s) (s).drop_off
+#define  ITEM_TYPE(s) (s).item_type
+#define   DURATION(s) (s).duration
+
 typedef struct {
   char drop_off;
   char item_type;
@@ -26,16 +30,12 @@ typedef struct {
 int lengthStack(Stack s);
 /* Mengembalikan jumlah elemen stack */
 
-#define DROP_PLACE(s) (s).drop_off;
-#define  ITEM_TYPE(s) (s).item_type;
-#define   COUNT(s) (s).duration
-
 /* ********* AKSES (Selektor) ********* */
 /* Jika s adalah Stack, maka akses elemen : */
 #define LEN_STACK(s) (s).length
 #define   IDX_TOP(s) (s).idxTop
 #define       TOP(s) (s).buffer[(s).idxTop]
-#define     HEAVY(s) (s).heavy;
+#define     HEAVY(s) (s).heavy
 
 /* *** Konstruktor/Kreator *** */
 void CreateStack(Stack *s);

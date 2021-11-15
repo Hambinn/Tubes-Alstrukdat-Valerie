@@ -281,6 +281,15 @@ void deleteLast(ListPos *l, ListType *val){
 /*      Banyaknya elemen List berkurang satu */
 /*      List l mungkin menjadi kosong */
 
+void deleteVal(ListPos *l, ListType val){
+    int idx = indexOf(*l,val);
+    int i;
+    for(i = idx+1; i < lengthListPos(*l); i++){
+        ELMTListPos(*l,i-1) = ELMTListPos(*l,i);
+    }
+    ELMTListPos(*l,lengthListPos(*l)-1)=VAL_UNDEF;
+}
+
 int charToIntLP(char c){
     int x;
     if (c=='8'){

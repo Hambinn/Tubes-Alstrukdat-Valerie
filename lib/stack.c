@@ -13,6 +13,8 @@ int lengthStack(Stack s){
 /* Proses : Melakukan alokasi, membuat sebuah s kosong */
 void CreateStack(Stack *s){
     IDX_TOP(*s) = IDX_UNDEF;
+    LEN_STACK(*s) = 0;
+    HEAVY(*s) = 0;
 }
 
 /* ************ Prototype ************ */
@@ -37,8 +39,8 @@ void push(Stack *s, ItemBag val){
         IDX_TOP(*s) += 1;
     }
     TOP(*s) = val;
+    LEN_STACK(*s)++;
 }
-
 
 /* ************ Menghapus sebuah elemen Stack ************ */
 /* Menghapus val dari Stack s */
@@ -52,5 +54,6 @@ void pop(Stack *s, ItemBag *val){
     else{
         IDX_TOP(*s) -= 1;
     }
+    LEN_STACK(*s)--;
 }
 

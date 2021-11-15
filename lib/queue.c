@@ -66,7 +66,7 @@ boolean isFull(Queue q) {
     return (IDX_HEAD(q) == 0 && IDX_TAIL(q) == 100-1);
 }
 
-int length(Queue q) {
+int lengthQueue(Queue q) {
     /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
     /* ALGORITMA */
