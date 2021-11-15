@@ -1,6 +1,11 @@
 #include "stack.h"
 #include <stdio.h>
 
+int countStack(Stack s){
+	/* Mengembalikan jumlah elemen dalam stack */
+	return (COUNTER(s));
+}
+
 /* *** Konstruktor/Kreator *** */
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah stack S kosong dengan kondisi sbb: */
