@@ -10,7 +10,7 @@ Map MAP;
 ListDin Bangunan;
 LOCATION HQ;
 Queue QueueOrder;
-
+#define endl printf("\n")
 void mulai(){
   boolean endmulai = false;
   int command;
@@ -27,8 +27,10 @@ void mulai(){
     printf("8. INVENTORY\n");
     printf("9. HELP\n");
     printf("ENTER COMMAND:");
-    scanf("%d",&command);
-    
+    // scanf("%d",&command);
+    tape = stdin;
+    startLine(tape);
+    command = StrToInt(currentWord);
 
     while((command!=1) && (command!=2 )&& (command!=3)&& (command!=4)&& (command!=5)&& (command!=6)&& (command!=7)&& (command!=8)&& (command!=9)){
     printf("Tolong Masukkan Pilihan yang Sesuai!\n");
@@ -42,7 +44,9 @@ void mulai(){
     printf("8. INVENTORY\n");
     printf("9. HELP\n");
     printf("ENTER COMMAND:");
-    scanf("%d",&command);
+    tape = stdin;
+    startLine(tape);
+    command = StrToInt(currentWord);
     }
 
     if(command == 1){
@@ -101,13 +105,12 @@ int main(){
       printf("Input konfigurasi game (path) : ");;
       startLine(tape);
       readFile(currentWord.contents);
-      displayMap(MAP);
+      mulai();
       endl;
-      // gatau cara cek nama filenya bener atau ga
     }else if(pilihanMain ==3){
       printf("Terimakasih Sudah Bermain!");
       return 0;
-    }else{
+    }else if(pilihanMain == 2){
       endl;
       printf("=============================== LOAD GAME =================================");
       endl;
@@ -118,9 +121,8 @@ int main(){
       printf("Input data saved (path) : ");
       startLine(tape);
       printf("%s", currentWord.contents);
-      // gatau cara cek nama filenya bener atau ga
+      mulai();
     }
-
   }
 
   fclose(tape);
