@@ -6,7 +6,6 @@ Map MAP;
 ListDin Bangunan;
 Queue QueueOrder;
 LOCATION HQ;
-ListLinked toDo;
 ListLinked inProgress;
 
 int StrToInt(Word w) {
@@ -119,7 +118,6 @@ void readFile(char path[]) {
         // printf("\n");
         enqueue(&QueueOrder, ITEM);
     }
-    CreateListLinked(&toDo);
     CreateListLinked(&inProgress);
     fclose(fp);
     // displayQueue(QueueOrder);

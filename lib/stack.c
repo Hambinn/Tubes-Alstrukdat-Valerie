@@ -31,7 +31,7 @@ boolean isFullStack(Stack s){
 /* Menambahkan val sebagai elemen Stack s */
 /* I.S. s mungkin kosong, tabel penampung elemen stack TIDAK penuh */
 /* F.S. val menjadi TOP yang baru,IDX_TOP bertambah 1 */
-void push(Stack *s, ItemBag val){
+void push(Stack *s, Item val){
     if ( isEmptyStack(*s) ){
         IDX_TOP(*s) = 0;
     }
@@ -40,13 +40,16 @@ void push(Stack *s, ItemBag val){
     }
     TOP(*s) = val;
     LEN_STACK(*s)++;
+    if (TYPE(val)=='H'){
+        HEAVY(*s)++;
+    }
 }
 
 /* ************ Menghapus sebuah elemen Stack ************ */
 /* Menghapus val dari Stack s */
 /* I.S. s tidak mungkin kosong */
 /* F.S. val adalah nilai elemen TOP yang lama, IDX_TOP berkurang 1 */
-void pop(Stack *s, ItemBag *val){
+void pop(Stack *s, Item *val){
     *val = TOP(*s);
     if ( IDX_TOP(*s) == 0 ){
         IDX_TOP(*s) = IDX_UNDEF;
@@ -55,5 +58,8 @@ void pop(Stack *s, ItemBag *val){
         IDX_TOP(*s) -= 1;
     }
     LEN_STACK(*s)--;
+    if (TYPE(*val)=='H'){
+        HEAVY(*s)--;
+    }
 }
 

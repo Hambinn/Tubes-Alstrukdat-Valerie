@@ -35,6 +35,7 @@ extern Map MAP;
 extern ListDin Bangunan;
 extern Queue QueueOrder;
 extern LOCATION HQ;
+extern ListLinked inProgress;
 
 int StrToInt(Word w);
 void readFile(char path[]);

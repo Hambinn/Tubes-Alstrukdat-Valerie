@@ -39,7 +39,7 @@ void displayNextPlace(ListPos nextPlace, ListDin bangunan){
     }
 }
 
-void move(Player *p, Matrix adjacency){
+void move(Player *p, Matrix adjacency, Stack bag){
     // Cari next lokasi yang memenuhi
     ListPos nextLoc = nextLocation(adjacency, PCurLocation(*p));
     // Tampilkan next lokasi
@@ -58,11 +58,21 @@ void move(Player *p, Matrix adjacency){
     else{
         int idx = ELMTListPos(nextLoc,op-1);
         PCurLocation(*p) = LISTDIN_ELMT(Bangunan,idx);
-        if (PSpeed(*p)==1){
-            PTime(*p)++;
+        if (HEAVY(bag) != 0){   // Ada barang berat
+            PTime(*p) += (1+HEAVY(bag));
         }
-        else if (PSpeed(*p)==2){
-            PTime(*p) += 0.5;
+        else{   // Tidak ada barang berat
+            if (REMAIN_BOOST(*p) != 0){     // Ada SpeedBoost
+                COUNT_TIME(*p)++;
+                REMAIN_BOOST(*p)--;
+                if (COUNT_TIME(*p) == 2){
+                    PTime(*p)++;
+                    COUNT_TIME(*p) = 0;
+                }
+            }
+            else {  // Tidak ada SpeedBoost
+                PTime(*p) ++;
+            }
         }
         
         printf("Mobita sekarang berada di titik ");displayLocation(PCurLocation(*p));endl;
@@ -70,16 +80,43 @@ void move(Player *p, Matrix adjacency){
 }
 
 int main(){
+    // 1. Deklarasi awal
     readFile("../config/config.txt");
     Player p;
+    Stack bag;
+    ListPos next;
+    CreateStack(&bag);
     createPlayer(&p,Bangunan);
+    
+
+    // 2. Bagian Eksperimen
+    HEAVY(bag) = 0;
+    REMAIN_BOOST(p) = 2;
+    Item val;
+    TMASUK(val) = 0;
+    PICKUP(val) = 'C';
+    DROPOFF(val) = 'P';
+    TYPE(val) = 'N';
+    DURATION(val) = 0;
+
+    push(&bag,val);
+
+    // 3. Bagian Output
+    next = nextLocation(adjacency,PCurLocation(p));
     displayStatus(p);endl;
-    ListPos next = nextLocation(adjacency,PCurLocation(p));
-    displayMap(MAP,PCurLocation(p),next);endl;
-    move(&p,adjacency);
+    displayMap(MAP,PCurLocation(p),next,bag);endl;
+    
+    move(&p,adjacency,bag);
+
     displayStatus(p);endl;
     next = nextLocation(adjacency,PCurLocation(p));
-    displayMap(MAP,PCurLocation(p),next);endl;
+    displayMap(MAP,PCurLocation(p),next,bag);endl;
+
+    move(&p,adjacency,bag);
+
+    displayStatus(p);endl;
+    next = nextLocation(adjacency,PCurLocation(p));
+    displayMap(MAP,PCurLocation(p),next,bag);endl;
     
 
     return 0;

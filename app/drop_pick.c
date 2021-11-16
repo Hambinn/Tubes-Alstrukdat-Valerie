@@ -9,32 +9,31 @@ ListDin Bangunan;
 Queue QueueOrder;
 LOCATION HQ;
 
-void pick(Stack *bag, List *drafPick, Player p){
-    ItemBag item;
-    char curr = NAME(PCurLocation(p));
-    int valInt = charToInt(curr);
+void pick(Stack *bag, ListLinked *drafPick, Player *p){
+    char curr = NAME(PCurLocation(*p));
     boolean found = false;
     int i = 0;
-    while (!found && i < lengthQueue(QueueOrder)){
-        if ( PICKUP(QueueOrder.buffer[i]) == curr ){
+    Address P1 = FIRST(*drafPick);
+    while (!found && P1!=NULL){
+        if ( PICKUP(ITEM(P1)) == curr ){
             found = true;
         }
         else{
-            i++;
+            P1 = NEXT(P1);
         }
     }
-    // Masukin ke item
-    DROP_PLACE(item) = DROPOFF(QueueOrder.buffer[i]);
-    ITEM_TYPE(item) = TYPE(QueueOrder.buffer[i]);
-    DURATION(item) = DURATION(QueueOrder.buffer[i]);
-    // Masukin ke bag
-    push(&bag,item);
-    if ( ITEM_TYPE(item)=='H' ){
-        HEAVY(*bag)++;
-    }
-    int idx = indexOf(*drafPick,valInt);
-    int temp;
-    deleteAt(&drafPick,idx,&temp);
-}
 
-void
+    // Masukin ke bag
+    push(&bag,ITEM(P1));
+    if ( TYPE(ITEM(P1))=='H' ){
+        HEAVY(*bag)++;
+        if (REMAIN_BOOST(*p) != 0){
+            if (REMAIN_BOOST(*p)%2 == 1){
+                PTime(*p)++;
+            }
+            REMAIN_BOOST(*p) = 0;
+            COUNT_TIME(*p) = 0;
+        }
+    }
+    deleteItem(&drafPick,ITEM(P1));
+}

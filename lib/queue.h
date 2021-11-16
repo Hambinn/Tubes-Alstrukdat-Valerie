@@ -45,6 +45,7 @@ typedef struct {
 #define IDX_TAIL(q) (q).idxTail
 #define     HEAD(q) (q).buffer[(q).idxHead]
 #define     TAIL(q) (q).buffer[(q).idxTail]
+#define ELMT_Q(q,i) (q).buffer[(i)]
 
 /* *** Kreator *** */
 void CreateQueue(Queue *q);

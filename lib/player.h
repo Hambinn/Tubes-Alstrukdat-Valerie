@@ -11,6 +11,11 @@
 #include "location.h"
 #include "queue.h"
 #define endl printf("\n")
+
+typedef struct {
+    int remainBoost;
+    int countTime;
+}BoosT;
 typedef struct
 {
     LOCATION currentLocation;
@@ -18,10 +23,10 @@ typedef struct
     int money;
     int speed;
     int bagCapacity;
-    ListPos pick;
-    // durasi effect
-    // jenis item
+    ListLinked drafPick;
+    BoosT boost;
 }Player;
+
 
 
 // ACCESORR
@@ -30,8 +35,9 @@ typedef struct
 #define       PSpeed(p) (p).speed
 #define     PBagCapa(p) (p).bagCapacity
 #define PCurLocation(p) (p).currentLocation
-
-LOCATION HQ;
+#define        PDRAF(p) (p).drafPick
+#define REMAIN_BOOST(p) (p).boost.remainBoost
+#define COUNT_TIME(p) (p).boost.countTime
 
 /* PRIMITIVE Player */
 /* Awalnya currentLocation di HQ (berdasarkan readFile)

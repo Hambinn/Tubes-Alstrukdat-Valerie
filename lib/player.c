@@ -13,6 +13,11 @@ void createPlayer(Player *p, ListDin bangunan){
     PMoney(*p) = 0;
     PSpeed(*p) = 1;
     PBagCapa(*p) = 3;
+    ListLinked drafPick;
+    CreateListLinked(&drafPick);
+    PDRAF(*p) = drafPick;
+    REMAIN_BOOST(*p) = 0;
+    COUNT_TIME(*p) = 0;
 }
 
 void displayTime(Player p){

@@ -8,18 +8,20 @@ Map MAP;
 ListDin Bangunan;
 Queue QueueOrder;
 LOCATION HQ;
-ListLinked toDo;
 ListLinked inProgress;
 
-void to_do(Player p) {
-    while (TMASUK(HEAD(QueueOrder)) <= PTime(p) && !isEmptyQueue(QueueOrder)) {
+void fillDrafToDO(Player *p) {
+    while (TMASUK(HEAD(QueueOrder)) <= PTime(*p) && !isEmptyQueue(QueueOrder)) {
         Item temp;
         dequeue(&QueueOrder, &temp);
-        insertItem(&toDo, temp);
+        insertItem(&PDRAF(*p), temp);
     }
-    deletePerishable(&toDo, PTime(p));
+    deletePerishable(&PDRAF(*p), PTime(*p));
+}
+
+void to_do(Player p){
     printf("List To Do : \n\n");
-    displayListLinked(toDo, PTime(p));
+    displayListLinked(PDRAF(p), PTime(p));
     endl;
 }
 
@@ -29,5 +31,6 @@ int main () {
     createPlayer(&p,Bangunan);
     PTime(p) = 29;
     displayStatus(p);endl;
+    fillDrafToDO(&p);
     to_do(p);
 }
