@@ -301,7 +301,7 @@ int charToIntLP(char c){
     return x;
 }
 
-boolean isIn(ListPos l, char X){
+boolean isInListPos(ListPos l, char X){
     boolean isin = false;
     if (!isEmptyListPos(l)){    
         int i = 0 ;

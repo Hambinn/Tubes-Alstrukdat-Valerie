@@ -126,3 +126,25 @@ int lengthLinkedList(ListLinked l){
     return len;
 }
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
+
+boolean isInLinkedList(ListLinked L, char name){
+    boolean found = false;
+    if ( isListLinkedEmpty(L) ){
+        found = false;
+    }
+    else {
+        Address pt = FIRST(L);
+        found = false;
+        while( !found && pt!=NULL ){
+            if (name == PICKUP(ITEM(pt))){
+                found = true;
+            }
+            else{
+                pt = NEXT(pt);
+            }
+        }
+    }
+    return found;
+}
+/* Mencari apakah ada elemen list yang it */
+/* Mengirimkan true jika ada, false jika tidak ada */

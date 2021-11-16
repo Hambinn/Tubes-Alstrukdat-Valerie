@@ -140,6 +140,6 @@ void deleteLast(ListPos *l, ListType *val);
 /*      List l mungkin menjadi kosong */
 
 int charToIntLP(char c);
-boolean isIn(ListPos l, char X);
+boolean isInListPos(ListPos l, char X);
 
 #endif

@@ -10,7 +10,6 @@ ListDin Bangunan;
 LOCATION HQ;
 Queue QueueOrder;
 
-
 // adjency adalah matrix adjacency, currentLoc adalah lokasi player terkini
 // return Listpos yang berisi int yg merepresentasikan bangunan, 0 untuk HQ, 1 untuk A dst..
 ListPos nextLocation(Matrix adjacency, LOCATION currentloc){
@@ -85,38 +84,46 @@ int main(){
     Player p;
     Stack bag;
     ListPos next;
+    ListLinked draf;
     CreateStack(&bag);
     createPlayer(&p,Bangunan);
-    
+    CreateListLinked(&draf);
 
     // 2. Bagian Eksperimen
     HEAVY(bag) = 0;
     REMAIN_BOOST(p) = 2;
-    Item val;
-    TMASUK(val) = 0;
-    PICKUP(val) = 'C';
-    DROPOFF(val) = 'P';
-    TYPE(val) = 'N';
-    DURATION(val) = 0;
-
-    push(&bag,val);
+    Item val1;
+    TMASUK(val1) = 0;
+    PICKUP(val1) = 'C';
+    DROPOFF(val1) = 'B';
+    TYPE(val1) = 'N';
+    DURATION(val1) = 0;
+    Item val2;
+    TMASUK(val2) = 0;
+    PICKUP(val2) = 'P';
+    DROPOFF(val2) = 'E';
+    TYPE(val2) = 'N';
+    DURATION(val2) = 0;
+    push(&bag,val1);
+    insertItem(&draf,val1);
+    insertItem(&draf,val2);
 
     // 3. Bagian Output
     next = nextLocation(adjacency,PCurLocation(p));
     displayStatus(p);endl;
-    displayMap(MAP,PCurLocation(p),next,bag);endl;
+    displayMap(MAP,PCurLocation(p),bag,draf,next);endl;
     
     move(&p,adjacency,bag);
 
     displayStatus(p);endl;
     next = nextLocation(adjacency,PCurLocation(p));
-    displayMap(MAP,PCurLocation(p),next,bag);endl;
+    displayMap(MAP,PCurLocation(p),bag,draf,next);endl;
 
     move(&p,adjacency,bag);
 
     displayStatus(p);endl;
     next = nextLocation(adjacency,PCurLocation(p));
-    displayMap(MAP,PCurLocation(p),next,bag);endl;
+    displayMap(MAP,PCurLocation(p),bag,draf,next);endl;
     
 
     return 0;

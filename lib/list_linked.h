@@ -55,4 +55,6 @@ void displayListLinked(ListLinked l, float time);
 int lengthLinkedList(ListLinked l);
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 
+boolean isInLinkedList(ListLinked L, char it);
+
 #endif

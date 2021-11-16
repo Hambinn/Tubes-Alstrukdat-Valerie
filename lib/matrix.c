@@ -2,6 +2,7 @@
 #include <math.h>
 #include "matrix.h"
 
+Matrix adjacency;
 
 /* ********** DEFINISI PROTOTIPE PRIMITIF ********** */
 /* *** Konstruktor membentuk Matrix *** */
@@ -17,7 +18,8 @@ void CreateMap(int nRow, int nCol, Map *m) {
     }
 }
 
-void displayMap(Map m,LOCATION curLoc,ListPos nextPlace, Stack bag) {
+
+void displayMap(Map m,LOCATION curLoc,Stack bag,ListLinked drafPick,ListPos nextPlace) {
     int i, j;
     char name;
     for(i=-1; i<ROWS(m)+1; i++){
@@ -25,21 +27,20 @@ void displayMap(Map m,LOCATION curLoc,ListPos nextPlace, Stack bag) {
             if(i==-1 || i==ROWS(m) || j==-1 || j==COLS(m)){
                 printf("#");
             }
-            else{
+            else{   // HIREARKI : Mobita > Drop off > Pick up > Destination > Neutral
                 name = ELMT(m, i, j);
                 char drop = DROPOFF(TOP(bag));
-                char pick = 'a';
                 if ( name == NAME(curLoc) ){
                     print_yellow(name);
                 }
-                else if (isIn(nextPlace,name)){
-                    print_green(name);
-                }
-                // else if ( name == drop ){
-                //     print_blue(name);
-                // }
                 else if ( name == drop ){
                     print_red(name);
+                }
+                else if (isInLinkedList(drafPick,name)){
+                    print_blue(name);
+                }
+                else if (isInListPos(nextPlace,name)){
+                    print_green(name);
                 }
                 else{
                     printf("%c",name);

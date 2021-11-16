@@ -9,7 +9,7 @@ ListDin Bangunan;
 Queue QueueOrder;
 LOCATION HQ;
 
-void pick(Stack *bag, ListLinked *drafPick, Player *p){
+void pickItem(Player *p, Stack *bag, ListLinked *drafPick){
     char curr = NAME(PCurLocation(*p));
     boolean found = false;
     int i = 0;
@@ -36,4 +36,17 @@ void pick(Stack *bag, ListLinked *drafPick, Player *p){
         }
     }
     deleteItem(&drafPick,ITEM(P1));
+}
+
+void dropItem(Player *p, Stack *bag){
+    char curr = NAME(PCurLocation(*p));
+    if (TYPE(TOP(*bag)) == 'H'){
+        HEAVY(*bag)--;
+        if (HEAVY(*bag) == 0){
+            REMAIN_BOOST(*p) = 10;
+            COUNT_TIME(*p) = 0;
+        }
+    }
+    Item rubbish;
+    pop(&bag,&rubbish);
 }
