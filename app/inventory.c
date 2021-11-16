@@ -6,8 +6,9 @@
 Matrix adjacency;
 Map MAP;
 ListDin Bangunan;
-LOCATION HQ;
 Queue QueueOrder;
+LOCATION HQ;
+ListLinked toDo;
 
 void displayInventory(Player *p, ListGadget l)
 {
@@ -19,14 +20,23 @@ void displayInventory(Player *p, ListGadget l)
 	printf("Gadget mana yang ingin digunakan? (ketik 0 jika ingin kembali)\n");
 }
 
-void useKain(Player *p, ListGadget l)
+void useKain(Player *p, ListGadget l, Stack *bag)
 {
     if(GDGT(l,0) != STRIP)
     {
+        int i;
+        float time = PTime(*p);
         printf("Kain Pembungkus Waktu berhasil digunakan!\n");
         deleteGadget(&l, 0);
         
-        // nunggu bag
+        for(i = LEN_STACK(*bag); i>=0 ; i--)
+        {
+            if(TYPE((*bag).buffer[i])=='P')
+            {
+                DURATION((*bag).buffer[i]) = DURATION((*bag).buffer[i]) + ((int)time + TMASUK((*bag).buffer[i]));
+                break;
+            }
+        }
     }
     else
     {
@@ -92,6 +102,7 @@ int main()
 	readFile("../config/config.txt");
     Player p;
     ListGadget l;
+    Stack b;
     int x;
   	CreateListGadget(&l);
     createPlayer(&p,Bangunan);
@@ -111,7 +122,7 @@ int main()
 
     if(command == 1)
     {
-        useKain(&p, l);
+        useKain(&p, l, &b);
     }
     else if(command == 2)
     {
