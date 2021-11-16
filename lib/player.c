@@ -62,3 +62,23 @@ char intToChar(int n){
     }
     return c;
 }
+
+void gainMoney(Player *p, char cc){
+    switch (cc)
+    {
+    case 'N':
+        PMoney(*p) += 200;
+        break;
+    case 'H':
+        PMoney(*p) += 400;
+        break;
+    case 'P':
+        PMoney(*p) += 400;
+        break;
+    case 'V':
+        PMoney(*p) += 600;
+        break;
+    default:
+        break;
+    }
+}

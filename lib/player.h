@@ -57,5 +57,5 @@ void displaySpeed(Player p);
 void displayBagCapa(Player p);
 int charToInt(char c);
 char intToChar(int n);
-
+void gainMoney(Player *p, char cc);
 #endif
