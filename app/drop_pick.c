@@ -26,7 +26,6 @@ void pickItem(Player *p, Stack *bag, ListLinked *drafPick){
     // Masukin ke bag
     push(&bag,ITEM(P1));
     if ( TYPE(ITEM(P1))=='H' ){
-        HEAVY(*bag)++;
         if (REMAIN_BOOST(*p) != 0){
             if (REMAIN_BOOST(*p)%2 == 1){
                 PTime(*p)++;
@@ -41,7 +40,6 @@ void pickItem(Player *p, Stack *bag, ListLinked *drafPick){
 void dropItem(Player *p, Stack *bag){
     char curr = NAME(PCurLocation(*p));
     if (TYPE(TOP(*bag)) == 'H'){
-        HEAVY(*bag)--;
         if (HEAVY(*bag) == 0){
             REMAIN_BOOST(*p) = 10;
             COUNT_TIME(*p) = 0;
