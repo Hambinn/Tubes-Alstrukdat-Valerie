@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "readfile.c"
 #include "move.c"
+#include "map.c"
 #include "to_do.c"
 #include "inprogress.c"
 #include "drop_pick.c"
@@ -126,8 +127,7 @@ void mulai(){
       }else if(command ==4){
         printf("================================== MAP ===================================");
         endl;
-        next = nextLocation(adjacency,PCurLocation(p));
-        displayMap(MAP,PCurLocation(p),bag,PDRAF(p),next);endl;
+        map(MAP,adjacency,bag,p);
       }else if(command == 5){
         printf("================================= TO DO ==================================");
         endl;
@@ -154,7 +154,8 @@ void mulai(){
         help();
       }
       else if(command == 11){
-        // Tempak bikin cheat
+        PMoney(p)+=10000;
+        PCurLocation(p) = HQ;
       }
       else if(command == 99){
         break;
