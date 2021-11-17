@@ -23,7 +23,7 @@ void addGadget(ListGadget *l, int i)
 /* I.S. List l boleh kosong, tetapi tidak penuh */
 /* F.S. gadget ditambahkan */
 {
-   GDGT(*l,i) = arr[i];
+   GDGT(*l,lengthGadget(*l)) = arr[i];
 }
 
 /* ********** MENGHAPUS ELEMEN ********** */

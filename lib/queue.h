@@ -28,7 +28,7 @@ Item makeItem (int tMasuk, char pick_up, char drop_off, char type, int dur);
 
 Item copyItem(Item ITEM);
 
-void displayItem(Item ITEM, float time);
+void displayItem(Item ITEM);
 
 boolean isSame (Item item1, Item item2);
 

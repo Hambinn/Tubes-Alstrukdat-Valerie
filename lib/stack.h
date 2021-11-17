@@ -53,4 +53,10 @@ void pop(Stack *s, Item *val);
 /* I.S. s tidak mungkin kosong */
 /* F.S. val adalah nilai elemen TOP yang lama, IDX_TOP berkurang 1 */
 
+boolean isPerishableIn(Stack bag);
+void cutDuration(Stack *bag);
+int isPerishableDie(Stack bag);
+void deletePerishableStack(Stack *bag);
+void displayItemStack(Stack bag);
+
 #endif

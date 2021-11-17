@@ -22,12 +22,12 @@ Item copyItem(Item item) {
     return x;
 }
 
-void displayItem(Item item, float time) {
+void displayItem(Item item) {
     printf("%c ", PICKUP(item));
     printf("-> %c ", DROPOFF(item));
     if (TYPE(item) == 'P') {
         printf("(Perishable Item, ");
-        printf("sisa waktu %d)\n", DURATION(item) - ((int)time - TMASUK(item)));
+        printf("sisa waktu %d)\n", DURATION(item));
     } else if (TYPE(item) == 'N') {
         printf("(Normal Item)\n");
     } else if (TYPE(item) == 'H') {
@@ -128,7 +128,13 @@ void dequeue(Queue *q, Item *item) {
 
     /* ALGORITMA */
     *item = HEAD(*q);
-    IDX_HEAD(*q)++;
+    if (IDX_HEAD(*q) == IDX_TAIL(*q)){
+        IDX_HEAD(*q) = IDX_UNDEF;
+        IDX_TAIL(*q) = IDX_UNDEF;
+    }
+    else{
+        IDX_HEAD(*q)++;
+    }
 }
 
 /* *** Display Queue *** */
@@ -143,11 +149,11 @@ void displayQueue(Queue q, float time) {
 
     /* ALGORITMA */
     if (isEmptyQueue(q)) {
-        printf("Tidak Ada Pesanan");
+        printf("Tidak Ada Pesanan\n");
     } else {
         int i = IDX_HEAD(q);
         int j = 1;
-        if (q.buffer[0].tMasuk <= time) {
+        if (HEAD(q).tMasuk > time) {
             printf("List Pesanan :\n\n");
             while (i <= IDX_TAIL(q)) {
                 if (q.buffer[i].tMasuk <= time) {
@@ -155,13 +161,13 @@ void displayQueue(Queue q, float time) {
                         if (q.buffer[i].tMasuk <= time && time < q.buffer[i].tMasuk + q.buffer[i].duration ) {
                             printf("%d. ", j);
                             j++;
-                            displayItem(q.buffer[i], time);
+                            displayItem(q.buffer[i]);
                             printf("\n");
                         }
                     } else {
                         printf("%d. ", j);
                         j++;
-                        displayItem(q.buffer[i], time);
+                        displayItem(q.buffer[i]);
                         printf("\n");
                     }
                 }

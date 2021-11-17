@@ -5,7 +5,6 @@
 #include "..\lib\boolean.h"
 #include "..\lib\charmachine.h"
 #include "..\lib\charmachine.c"
-#include "..\lib\help.c"
 #include "..\lib\list_linked.h"
 #include "..\lib\list_linked.c"
 #include "..\lib\listdin.h"
@@ -28,6 +27,7 @@
 #include "..\lib\wordmachine.c"
 #include "..\lib\node.h"
 #include "..\lib\node.c"
+#include "..\lib\player.c"
 
 
 extern Matrix adjacency;

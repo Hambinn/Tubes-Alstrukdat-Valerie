@@ -34,6 +34,10 @@ void displayBagCapa(Player p){
     printf("Capasitas Tas: %d", PBagCapa(p));
 }
 
+void displayCurLoc(Player p){
+    printf("Kamu berada di posisi %c ",NAME(PCurLocation(p)));TulisPOINT(PCurLocation(p).loc);
+}
+
 void displayStatus(Player p){
     printf("Player berada di: ");displayLocation(PCurLocation(p));endl;
     displayTime(p);endl;
@@ -45,8 +49,9 @@ int charToInt(char c){
     int x;
     if (c=='8'){
         x = 0;
-    }
-    else{
+    } else if (c=='@') {
+        x = 69;
+    } else{
         x =((int)c - 64);
     }
     return x;
@@ -81,4 +86,26 @@ void gainMoney(Player *p, char cc){
     default:
         break;
     }
+}
+int itemMoney(char cc){
+    int money;
+    switch (cc)
+    {
+    case 'N':
+        money = 200;
+        break;
+    case 'H':
+        money = 400;
+        break;
+    case 'P':
+        money = 400;
+        break;
+    case 'V':
+        money = 600;
+        break;
+    default:
+        money = 0;
+        break;
+    }
+    return money;
 }

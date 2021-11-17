@@ -30,11 +30,13 @@ boolean isListLinkedEmpty(ListLinked l);
 
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
-void insertItem(ListLinked *l, Item item);
+void insertItemFirst(ListLinked *l, Item item);
 /* I.S. l mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen list di akhir: elemen terakhir yang baru */
 /* bernilai val jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
+
+void insertItemLast(ListLinked *l, Item item);
 
 /*** PENGHAPUSAN ELEMEN ***/
 void deleteItem(ListLinked *l, Item val);
@@ -44,7 +46,7 @@ void deleteItem(ListLinked *l, Item val);
 
 
 /****************** PROSES SEMUA ELEMEN LIST ******************/
-void displayListLinked(ListLinked l, float time);
+void displayListLinked(ListLinked l);
 // void printInfo(List l);
 /* I.S. List mungkin kosong */
 /* F.S. Jika list tidak kosong, iai list dicetak ke kanan: [e1,e2,...,en] */

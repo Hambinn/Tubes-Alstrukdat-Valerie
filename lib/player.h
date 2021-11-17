@@ -10,6 +10,7 @@
 #include "wordmachine.h"
 #include "location.h"
 #include "queue.h"
+#include "list_linked.h"
 #define endl printf("\n")
 
 typedef struct {
@@ -37,7 +38,7 @@ typedef struct
 #define PCurLocation(p) (p).currentLocation
 #define        PDRAF(p) (p).drafPick
 #define REMAIN_BOOST(p) (p).boost.remainBoost
-#define COUNT_TIME(p) (p).boost.countTime
+#define   COUNT_TIME(p) (p).boost.countTime
 
 /* PRIMITIVE Player */
 /* Awalnya currentLocation di HQ (berdasarkan readFile)
