@@ -13,7 +13,7 @@ Queue QueueOrder;
 static FILE * tape;
 ListPos next;
 
-void map(Map MAP, Matrix adjacency, Stack bag, Player p){
+void mapGame(Map MAP, Matrix adjacency, Stack bag, Player p){
     next = nextLocation(adjacency,PCurLocation(p));
     displayMap(MAP,PCurLocation(p),bag,PDRAF(p),next);endl;
 }
