@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "queue.h"
+#include "../queue/queue.c"
 
 typedef struct node* Address;
 typedef struct node {

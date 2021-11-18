@@ -25,7 +25,7 @@ void displayTime(Player p){
     printf("Waktu: %d", roundTime);
 }
 void displayMoney(Player p){
-    printf("Money(sen): %d", PMoney(p));
+    printf("Money(yen): %d", PMoney(p));
 }
 void displaySpeed(Player p){
     printf("Speed: %d", PSpeed(p));

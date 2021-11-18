@@ -98,14 +98,13 @@ void listdin_displayList(ListDin l){
     }
     else{
         int i;
-        printf("[");
         for(i=0;i<=listdin_length(l)-1;i++){
             if(i!=0){
                 printf(",");
             }
-            printf("%d",LISTDIN_ELMT(l,i));
+            displayLocation(LISTDIN_ELMT(l,i));
+            printf("\n");
         }
-        printf("]");
     }
     return;
 }

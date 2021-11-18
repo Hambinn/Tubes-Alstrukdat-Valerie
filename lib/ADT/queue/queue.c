@@ -138,7 +138,7 @@ void dequeue(Queue *q, Item *item) {
 }
 
 /* *** Display Queue *** */
-void displayQueue(Queue q, float time) {
+void displayQueue(Queue q) {
     /* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung 
     siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
     karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
@@ -153,28 +153,10 @@ void displayQueue(Queue q, float time) {
     } else {
         int i = IDX_HEAD(q);
         int j = 1;
-        if (HEAD(q).tMasuk > time) {
-            printf("List Pesanan :\n\n");
-            while (i <= IDX_TAIL(q)) {
-                if (q.buffer[i].tMasuk <= time) {
-                    if (q.buffer[i].type == 'P') {
-                        if (q.buffer[i].tMasuk <= time && time < q.buffer[i].tMasuk + q.buffer[i].duration ) {
-                            printf("%d. ", j);
-                            j++;
-                            displayItem(q.buffer[i]);
-                            printf("\n");
-                        }
-                    } else {
-                        printf("%d. ", j);
-                        j++;
-                        displayItem(q.buffer[i]);
-                        printf("\n");
-                    }
-                }
-                i++;
-            }
-        } else {
-            printf("Tidak Ada Pesanan");
+        printf("List Pesanan :\n");
+        while (i <= IDX_TAIL(q)) {
+            displayItem(q.buffer[i]);
+            i++;
         }
     }
 }

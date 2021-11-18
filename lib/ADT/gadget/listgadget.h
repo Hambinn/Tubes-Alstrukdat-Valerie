@@ -1,7 +1,7 @@
 #ifndef LISTGADGET_H
 #define LISTGADGET_H
 
-#include "boolean.h"
+#include "../../boolean.h"
 
 /*  Kamus Umum */
 #define INVENTORY 5
