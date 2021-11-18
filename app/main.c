@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "string.h"
 #include <ctype.h> 
 #include "readfile.c"
 #include "move.c"
@@ -98,7 +99,7 @@ void mulai(){
       printf("10. HELP\n");
       printf("11. HESOYAM (Cheat)\n");
       printf("99. Main Menu\n");
-      printf("ENTER COMMAND:");
+      printf("ENTER COMMAND : ");
       // scanf("%d",&command);
       startLine(tape);
       command = StrToInt(currentWord);
@@ -117,7 +118,7 @@ void mulai(){
         printf("10. HELP\n");
         printf("11. HESOYAM (Cheat)\n");
         printf("99. Main Menu\n");
-        printf("ENTER COMMAND:");
+        printf("ENTER COMMAND : ");
         startLine(tape);
         command = StrToInt(currentWord);
       }
@@ -171,7 +172,10 @@ void mulai(){
         endl;
         printf("Masukkan TOKEN DEWA: ");
         startLine(tape);
-        if (currentWord.contents=="SSR")
+        char code[3];
+        char cmpr[3] = "SSR";
+        snprintf(code, currentWord.length+1, "%s", currentWord.contents);
+        if (strcmp(code, cmpr))
         {
           printf(">> CHEAT ACTIVATED...!!!\nMoney ++10.000, Time ++10, Now u on HQ");endl;
           PMoney(p) += 10000;
