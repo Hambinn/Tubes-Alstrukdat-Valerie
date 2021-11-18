@@ -89,6 +89,9 @@ void move(Player *p, Matrix adjacency, Stack *bag){
                     // Durasi Perishable dikuranganin
                     cutDuration(bag);
                 }
+                if (REMAIN_BOOST(*p) != 0){
+                    printf("Efek kekuatan petir hilang..!");endl;
+                }
             }
             else {  // Tidak ada SpeedBoost
                 PTime(*p) ++;

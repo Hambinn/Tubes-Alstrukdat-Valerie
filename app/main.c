@@ -70,8 +70,9 @@ void mulai(){
   boolean endmulai = false;
   int command;
   tape = stdin;
-  printf("Permainan Dimulai!\n");
   endl;
+  printf("==========================================================================");endl;
+  printf(">> PERMAINAN DIMULAI.. PERSIAPKAN SEMANGAT TERBAIKMU SPARTANS..!!!");endl;
   while(!endmulai){
     // Cek QueueOrder, masukkan ke drafPick
     fillDrafToDO(&p);
@@ -187,13 +188,15 @@ void mulai(){
         printf("Apakah anda ingin mensave game terlebih dahulu?");endl;
         printf("y/n : ");
         startLine(tape);
-        char low = tolower(currentWord.contents);
-        while (low != 'y' || low != 'n'){
+        char low = tolower(currentWord.contents[0]);
+        while (low != 'y' && low != 'n'){
+          printf("Masukkan yang benar (y/n): ");
           startLine(tape);
-          char low = tolower(currentWord.contents);
+          low = tolower(currentWord.contents[0]);
         }
         
         if (low=='y'){
+          endl;
           printf("Data anda akan disave >>");endl;
           saveFile(p,bag,l);
         }
@@ -201,6 +204,7 @@ void mulai(){
           printf("Data anda tidak akan di save..!!");endl;
         }
         printf("Kembali ke main menu >>");endl;
+        printf("============================= ========== ===============================");endl;
         break;
       }
       endmulai = finish(p,QueueOrder,bag);

@@ -38,6 +38,7 @@ void pickItem(Player *p, Stack *bag){
                     if (REMAIN_BOOST(*p)%2 == 1){
                         PTime(*p)++;
                     }
+                    printf("Kamu kehilangan kekuatan petir karena terlalu berat dan menjadi lambat..!");endl;
                     REMAIN_BOOST(*p) = 0;
                     COUNT_TIME(*p) = 0;
                 }
@@ -61,7 +62,6 @@ void pickItem(Player *p, Stack *bag){
         else{
             printf("Lu Ngambil apa? Gw ga mesen tuh!");endl;
         }
-
     }
     
     
@@ -72,7 +72,7 @@ void dropItem(Player *p, Stack *bag){
     if (DROPOFF(TOP(*bag))==curr){
         if (TYPE(TOP(*bag)) == 'H'){
             if (HEAVY(*bag) == 1){
-                printf("Selamat kamu jadi flash!");endl;
+                printf("Kamu barusan disambar petir dan menjadi The FLASH..!");endl;
                 REMAIN_BOOST(*p) = 10;
                 COUNT_TIME(*p) = 0;
             }

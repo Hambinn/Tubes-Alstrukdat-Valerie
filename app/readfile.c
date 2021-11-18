@@ -136,7 +136,7 @@ void saveFile (Player p, Stack bag, ListGadget l) {
     for ( i=0; i<currentWord.length; i++ ) {
         name[i] = currentWord.contents[i];
     }
-    printf("%s\n", name);
+    printf("Data anda berhasil disimpan di ../save/%s.txt\n", name);
     char filename[100] = "";
     strcat(filename, "../save/");
     strcat(filename, name);
@@ -201,7 +201,7 @@ void saveFile (Player p, Stack bag, ListGadget l) {
 }
 
 void loadFile (char path[], Player *p, Stack *bag, ListGadget *l) {
-    printf("%s\n", path);
+    // printf("%s\n", path);
     FILE *fp;
     fp=fopen(path, "r");
     
@@ -395,7 +395,7 @@ void loadFile (char path[], Player *p, Stack *bag, ListGadget *l) {
         insertItemLast(&temp, ITEM);
     }
     p->drafPick = temp;
-    displayListLinked(p->drafPick);
+    // displayListLinked(p->drafPick);
     CreateListGadget(l);
     for (i=0; i<5; i++) {
         startLine(fp);
