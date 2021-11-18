@@ -138,7 +138,7 @@ void mulai(){
       }else if(command ==4){
         printf("================================== MAP ===================================");
         endl;
-        map(MAP,adjacency,bag,p);
+        mapGame(MAP,adjacency,bag,p);
       }else if(command == 5){
         printf("================================= TO DO ==================================");
         endl;
