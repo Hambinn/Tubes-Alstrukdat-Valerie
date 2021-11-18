@@ -74,7 +74,7 @@ void deleteItem(ListLinked *l, Item item){
 /****************** PROSES SEMUA ELEMEN LIST ******************/
 void displayListLinked(ListLinked l){
     if ( isListLinkedEmpty(l) ){
-        printf("Tidak ada orderan");
+        printf("Tidak ada orderan\n");
     }
     else{
         Address p1 = FIRST(l);
