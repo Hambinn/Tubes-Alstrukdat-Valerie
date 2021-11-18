@@ -195,7 +195,7 @@ void mulai(){
         
         if (low=='y'){
           printf("Data anda akan disave >>");endl;
-          saveFile(p,bag);
+          saveFile(p,bag,l);
         }
         else{
           printf("Data anda tidak akan di save..!!");endl;
