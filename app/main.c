@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h> 
 #include "readfile.c"
 #include "move.c"
 #include "map.c"
@@ -154,10 +155,41 @@ void mulai(){
         help();
       }
       else if(command == 11){
-        PMoney(p)+=10000;
-        PCurLocation(p) = HQ;
+        printf("================================= CHEAT ==================================");
+        endl;
+        printf("Masukkan TOKEN DEWA: ");
+        startLine(tape);
+        if (currentWord.contents=="SSR")
+        {
+          printf(">> CHEAT ACTIVATED...!!!\nMoney ++10.000, Time ++10, Now u on HQ");endl;
+          PMoney(p) += 10000;
+          PTime(p) += 10;
+          PCurLocation(p) = HQ;
+        }
+        else{
+          printf("SORRY BRADERR... TOKENNYA SALAH");endl;
+        }
       }
       else if(command == 99){
+        printf("============================= BACK TO MENU ===============================");
+        endl;
+        printf("Apakah anda ingin mensave game terlebih dahulu?");endl;
+        printf("y/n : ");
+        startLine(tape);
+        char low = tolower(currentWord.contents);
+        while (low != 'y' || low != 'n'){
+          startLine(tape);
+          char low = tolower(currentWord.contents);
+        }
+        
+        if (low=='y'){
+          printf("Data anda akan disave >>");endl;
+          saveFile(p,bag);
+        }
+        else{
+          printf("Data anda tidak akan di save..!!");endl;
+        }
+        printf("Kembali ke main menu >>");endl;
         break;
       }
       endmulai = finish(p,QueueOrder,bag);
