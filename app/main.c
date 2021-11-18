@@ -33,6 +33,17 @@ boolean finish(Player p, Queue Q, Stack bag){
   return fin;
 }
 
+boolean exists(const char *fname)
+{
+    FILE *file;
+    if ((file = fopen(fname, "r")))
+    {
+        fclose(file);
+        return true;
+    }
+    return false;
+}
+
 void endGame(){
   printf("==========================================   TAMAT   ==========================================");endl;endl;
   printf("SELAMAT Player..!! KAMU telah MENYELAMATKAN bisnis Mobita dari KEHANCURAN..!!!!");endl;
@@ -147,7 +158,7 @@ void mulai(){
       }else if(command == 9){
         printf("============================== SAVE GAME =================================");
         endl;
-        saveFile(p, bag);
+        saveFile(p, bag, l);
       }else if(command == 10) {
         printf("================================= HELP ===================================");
         endl;
@@ -165,7 +176,9 @@ void mulai(){
 
   } // End of while MUlAI
 
-  endGame();
+  if( finish(p,QueueOrder,bag) ){
+    endGame();
+  }
 
 }
 
@@ -200,14 +213,20 @@ int main(){
       endl;
       printf("=============================== NEW GAME =================================");
       endl;
-      printf("Input konfigurasi game (path) : ");;
+      printf("Input konfigurasi game (path) : ");
       startLine(tape);
+      while ( !exists(currentWord.contents) ) {
+        endl;
+        printf("File tidak ditemukan! \n");
+        printf("Input konfigurasi game (path) : ");
+        startLine(tape);
+      }
       readFile(currentWord.contents);
       CreateListGadget(&l);
       CreateStack(&bag);
       createPlayer(&p,Bangunan);
-      PMoney(p) = 100000;
-      PTime(p) = 50;
+      // PMoney(p) = 10000;
+      // PTime(p) = 50;
       mulai();
       endl;
     }else if(pilihanMain ==3){
@@ -217,13 +236,20 @@ int main(){
       endl;
       printf("=============================== LOAD GAME =================================");
       endl;
-      printf("Input konfigurasi game (path) :");
-      startLine(tape);
-      endl;
-      printf("%s", currentWord.contents);
       printf("Input data saved (path) : ");
+      tape = stdin;
       startLine(tape);
-      printf("%s", currentWord.contents);
+      char filename[50];
+      snprintf(filename, currentWord.length+1, "%s", currentWord.contents);
+      while ( !exists(currentWord.contents) ) {
+        endl;
+        printf("File tidak ditemukan! \n");
+        printf("Input data saved (path) : ");
+        startLine(tape);
+        char filename[50];
+        snprintf(filename, currentWord.length+1, "%s", currentWord.contents);
+      }
+      loadFile(filename, &p, &bag, &l);
       mulai();
     }
   }
