@@ -42,7 +42,7 @@ void readFile(char path[]) {
     POINT hq = MakePOINT(n, m);
     char name = '8';
     ELMT(MAP, 0, 0) = '8';
-    LOCATION HQ = makeLocation(name, hq);
+    HQ = makeLocation(name, hq);
     
     // memasukkan input beberapa lokasi pada buffer LOCATION
     
