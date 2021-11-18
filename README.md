@@ -1,13 +1,13 @@
 # Tubes-Algeo-Valerie
 
-Kent Liusudarso             13520069
-Rahmat Rafid Akbar          13520090
-Ilham Bintang Nurmansyah    13520102
-Roby Purnomo                13520106
-Muhammad Rakha Athaya       13520108
+- Kent Liusudarso             13520069
+- Rahmat Rafid Akbar          13520090
+- Ilham Bintang Nurmansyah    13520102
+- Roby Purnomo                13520106
+- Muhammad Rakha Athaya       13520108
 
 # Modulasi Program
-
+```
 ├───app
 │   ├───main
 │   ├───drop_pick
@@ -35,7 +35,7 @@ Muhammad Rakha Athaya       13520108
 │   └───helper
 │       └───pcolor
 └───save
-
+```
 # Cara Run File
 
 1. Pergi ke folder "app"
