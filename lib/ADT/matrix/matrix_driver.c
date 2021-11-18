@@ -10,5 +10,7 @@
 
 
 int main() {
-    
+    Matrix m;
+    CreateMatrix(10,10,&m);
+    displayMatrix(m);
 }

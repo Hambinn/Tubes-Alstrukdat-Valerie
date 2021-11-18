@@ -132,10 +132,12 @@ void saveFile (Player p, Stack bag, ListGadget l) {
     printf("Masukkan nama file save (jangan memakai spasi) : ");
     tape = stdin;
     startLine(tape);
-    char *name = malloc(currentWord.length * sizeof(char));
-    for ( i=0; i<currentWord.length; i++ ) {
-        name[i] = currentWord.contents[i];
-    }
+    // char *name = malloc(currentWord.length * sizeof(char));
+    // for ( i=0; i<currentWord.length; i++ ) {
+    //     name[i] = currentWord.contents[i];
+    // }
+    char name[50];
+    snprintf(name, currentWord.length+1, "%s", currentWord.contents);
     printf("Data anda berhasil disimpan di ../save/%s.txt\n", name);
     char filename[100] = "";
     strcat(filename, "../save/");

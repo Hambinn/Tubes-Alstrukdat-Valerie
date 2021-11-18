@@ -99,9 +99,6 @@ void listdin_displayList(ListDin l){
     else{
         int i;
         for(i=0;i<=listdin_length(l)-1;i++){
-            if(i!=0){
-                printf(",");
-            }
             displayLocation(LISTDIN_ELMT(l,i));
             printf("\n");
         }

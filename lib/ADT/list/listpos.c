@@ -1,12 +1,3 @@
-/*
-NIM             : 13520090
-Nama            : Rahmat Rafid Akbar
-Tanggal         : 7 September 2021
-Topik praktikum : ADT List
-Deskripsi       : Pra Praktikum, membuat realisasi header ADT list
-                  implementasi array implisit rata kiri
-*/
-
 #include <stdio.h>
 #include "listpos.h"
 

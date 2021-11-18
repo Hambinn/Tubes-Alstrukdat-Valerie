@@ -57,6 +57,5 @@ boolean isPerishableIn(Stack bag);
 void cutDuration(Stack *bag);
 int isPerishableDie(Stack bag);
 void deletePerishableStack(Stack *bag);
-void displayItemStack(Stack bag);
 
 #endif
