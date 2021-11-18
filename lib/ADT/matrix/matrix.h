@@ -3,12 +3,12 @@
 #ifndef Matrix_H
 #define Matrix_H
 
-#include "boolean.h"
-#include "location.h"
-#include "listpos.h"
-#include "pcolor.h"
-#include "pcolor.c"
-#include "stack.h"
+#include "../../boolean.h"
+#include "../other/location.h"
+#include "../list/listpos.h"
+#include "../../helper/pcolor.c"
+#include "../stack/stack.h"
+#include "../linked/list_linked.h"
 
 /* Ukuran minimum dan maksimum baris dan kolom */
 #define ROW_CAP 100

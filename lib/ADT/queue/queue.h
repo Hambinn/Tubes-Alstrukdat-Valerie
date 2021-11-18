@@ -4,7 +4,7 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include "boolean.h"
+#include "../../boolean.h"
 
 #define IDX_UNDEF -1
 
@@ -79,7 +79,7 @@ void dequeue(Queue *q, Item *val);
         q mungkin kosong */
 
 /* *** Display Queue *** */
-void displayQueue(Queue q, float time);
+void displayQueue(Queue q);
 /* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung 
    siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
    karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */

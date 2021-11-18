@@ -5,8 +5,8 @@
 #ifndef STACK_H
 #define STACK_H
 
-#include "boolean.h"
-#include "queue.h"
+#include "../../boolean.h"
+#include "../queue/queue.h"
 
 #define IDX_UNDEF -1
 #define CAPACITY 100
@@ -57,6 +57,5 @@ boolean isPerishableIn(Stack bag);
 void cutDuration(Stack *bag);
 int isPerishableDie(Stack bag);
 void deletePerishableStack(Stack *bag);
-void displayItemStack(Stack bag);
 
 #endif

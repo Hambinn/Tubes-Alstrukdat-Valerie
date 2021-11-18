@@ -1,16 +1,15 @@
 #ifndef PLAYER_H
 #define PlAYER_H
 
-#include "boolean.h"
-#include "charmachine.h"
-#include "listdin.h"
-#include "listpos.h"
-#include "matrix.h"
-#include "point.h"
-#include "wordmachine.h"
-#include "location.h"
-#include "queue.h"
-#include "list_linked.h"
+#include "../../boolean.h"
+#include "../input/wordmachine.h"
+#include "../list/listdin.h"
+#include "../list/listpos.h"
+#include "../matrix/matrix.h"
+#include "../other/point.h"
+#include "../other/location.h"
+#include "../queue/queue.h"
+#include "../linked/list_linked.h"
 #define endl printf("\n")
 
 typedef struct {

@@ -1,4 +1,5 @@
 #include "location.h"
+#include <stdio.h>
 
 LOCATION makeLocation (char name, POINT loc) {
     LOCATION l;
