@@ -1,10 +1,10 @@
 # Tubes-Algeo-Valerie
 
-- Kent Liusudarso             13520069
-- Rahmat Rafid Akbar          13520090
-- Ilham Bintang Nurmansyah    13520102
-- Roby Purnomo                13520106
-- Muhammad Rakha Athaya       13520108
+- 13520069 Kent Liusudarso
+- 13520090 Rahmat Rafid Akbar
+- 13520102 Ilham Bintang Nurmansyah
+- 13520106 Roby Purnomo
+- 13520108 Muhammad Rakha Athaya
 
 # Modulasi Program
 ```
@@ -43,3 +43,7 @@
 3. Pilih New Game
 4. Masukkan path ../config/config.txt
 5. Selamat Bermain! :>
+
+# Tampilan Menu Utama
+
+![menu](menu.png "Menu Utama")
