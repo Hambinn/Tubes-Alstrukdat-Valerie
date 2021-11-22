@@ -174,8 +174,8 @@ void mulai(){
         startLine(tape);
         char code[3];
         char cmpr[3] = "SSR";
-        snprintf(code, currentWord.length+1, "%s", currentWord.contents);
-        if (strcmp(code, cmpr))
+        snprintf(code, currentWord.length, "%s", currentWord.contents);
+        if (code==cmpr)
         {
           printf(">> CHEAT ACTIVATED...!!!\nMoney ++10.000, Time ++10, Now u on HQ");endl;
           PMoney(p) += 10000;
